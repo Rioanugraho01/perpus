@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Perpustakaan Poliwangi</title>
-    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap">
-    <link rel="stylesheet" href="../assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="{{ asset('assets/fonts/fontawesome-all.min.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
@@ -21,7 +22,7 @@
                 <ul class="navbar-nav text-light" id="accordionSidebar">
                     <li class="nav-item"><a class="nav-link {{ (Request::is('dashboard') ? 'active' : '') }}" href="{{ url('dashboard') }}"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
                     <li class="nav-item"><a class="nav-link {{ (Request::is('pengunjung') ? 'active' : '') }}" href="{{ url('pengunjung') }}"><i class="fas fa-user"></i><span>Data Pengunjung</span></a></li>
-                    <li class="nav-item"><a class="nav-link {{ (Request::is('manajemenpengunjung') ? 'active' : '') }}" href="{{ url('manajemenpengunjung') }}"><i class="fas fa-table"></i><span>Data Kelola User</span></a></li>
+                    <li class="nav-item"><a class="nav-link {{ (Request::is('management') ? 'active' : '') }}" href="{{ url('management') }}"><i class="fas fa-table"></i><span>Data Kelola User</span></a></li>
                     <li class="nav-item"><a class="nav-link {{ (Request::is('manajemenpengunjung') ? 'active' : '') }}" href="{{ url('manajemenpengunjung') }}"><i class="fas fa-table"></i><span>Edit Survei Kepuasan</span></a></li>
                     <li class="nav-item"></li>
                     <li class="nav-item"><a class="nav-link" href="register.html"></a></li>
@@ -133,11 +134,6 @@
                 <main class="py-0">
                     @yield('content')
                 </main>
-                <footer class="bg-white sticky-footer">
-                <div class="container my-auto">
-                    <div class="text-center my-auto copyright"></div>
-                </div>
-            </footer>
         </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
     </div>
     <script src="../assets/js/chart.min.js"></script>
@@ -179,5 +175,25 @@ try {
   console.log(error);
 }
 </script>
+
+<script>
+        const togglePassword = document.querySelector("#togglePassword");
+        const password = document.querySelector("#password");
+
+        togglePassword.addEventListener("click", function () {
+            // toggle the type attribute
+            const type = password.getAttribute("type") === "password" ? "text" : "password";
+            password.setAttribute("type", type);
+            
+            // toggle the icon
+            this.classList.toggle("bi-eye");
+        });
+
+        // prevent form submit
+        const form = document.querySelector("form");
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+        });
+    </script>
 </body>
 </html>

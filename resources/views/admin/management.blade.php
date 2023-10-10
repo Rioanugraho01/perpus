@@ -4,7 +4,7 @@
 <div class="container-fluid">
     <h3 class="text-dark mb-4">Manajemen Pengunjung</h3>
     <div class="card shadow">
-        <div class="card-header py-3" style="text-align: right;"><button class="btn btn-primary" type="button" style="font-size: 12px;"><i class="fas fa-plus fa-2x text-gray-300" style="font-size: 12px;"></i></button></div>
+        <div class="card-header py-3" style="text-align: right;"><a href="{{ route('management.create') }}" class="btn btn-primary" type="button" style="font-size: 12px;"><i class="fas fa-plus fa-2x text-white-300" style="font-size: 12px;"></i></a></div>
         <div class="card-body">
             <div class="row">
                 <div class="col-md-6 text-nowrap">
@@ -27,45 +27,32 @@
                             <th>Gambar</th>
                             <th>Nama</th>
                             <th>NIM/NIPPK/No.Telp</th>
-                            <th>Role</th>
+                            <th>Prodi</th>
+                            <th>No Telp</th>
+                            <th>Status</th>
+                            <th>Alamat</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach($user as $user)
                         <tr>
-                            <td>1.</td>
-                            <td><img class="rounded-circle me-2" width="30" height="30" src="../assets/img/avatars/avatar1.jpeg" /></td>
-                            <td>Jeni Novitasari</td>
-                            <td>3361554018</td>
-                            <td>Mahasiswa</td>
-                            <td><i class="fas fa-edit fa-2x text-gray-300" style="font-size: 20px;"></i><i class="fas fa-trash fa-2x text-gray-300" style="font-size: 20px;"></i></td>
+                            <td>{{ $loop->iteration }}</td>
+                            <td><img class="rounded-circle me-2" width="30" height="30" src="{{ $user->image }}" /></td>
+                            <td>{{ $user->name }}</td>
+                            <td>{{ $user->email }}</td>
+                            <td>{{ $user->prodi }}</td>
+                            <td>{{ $user->phone }}</td>
+                            <td>{{ $user->status }}</td>
+                            <td>{{ $user->alamat }}</td>
+                            <td><form action="{{ route('management.destroy',$user->id) }}" method="post">
+                                <a href="{{ route('management.edit',$user->id) }}">
+                                <i class="fas fa-edit fa-2x text-primary pr-1" style="font-size: 20px; font-color: red"></i></a>
+                                @csrf @method('DELETE')
+                                <button type="submit" class="border-0 bg-transparent"><i class="fas fa-trash fa-2x text-danger" style="font-size: 20px;"></i></button></form>
+                                </td>
                         </tr>
-                        <tr>
-                            <td>2. </td>
-                            <td><img class="rounded-circle me-2" width="30" height="30" src="../assets/img/avatars/avatar2.jpeg" /></td>
-                            <td>Galuh Ayu Oktaviani</td>
-                            <td>3361554017</td>
-                            <td>Mahasiswa</td>
-                            <td><i class="fas fa-edit fa-2x text-gray-300" style="font-size: 20px;"></i><i class="fas fa-trash fa-2x text-gray-300" style="font-size: 20px;"></i></td>
-                        </tr>
-                        <tr>
-                            <td>3. </td>
-                            <td><img class="rounded-circle me-2" width="30" height="30" src="../assets/img/avatars/avatar3.jpeg" /></td>
-                            <td>Rio Anugrah Putra</td>
-                            <td>3361554010</td>
-                            <td>Mahasiswa</td>
-                            <td><i class="fas fa-edit fa-2x text-gray-300" style="font-size: 20px;"></i><i class="fas fa-trash fa-2x text-gray-300" style="font-size: 20px;"></i></td>
-                        </tr>
-                        <tr>
-                            <td>4. </td>
-                            <td><img class="rounded-circle me-2" width="30" height="30" src="../assets/img/avatars/avatar4.jpeg" /></td>
-                            <td>Azza Faiz Hamdani</td>
-                            <td>3361554019</td>
-                            <td>Dosen</td>
-                            <td><i class="fas fa-edit fa-2x text-gray-300" style="font-size: 20px;"></i><i class="fas fa-trash fa-2x text-gray-300" style="font-size: 20px;"></i></td>
-                        </tr>
-                        <tr></tr>
-                        <tr></tr>
+                        @endforeach
                     </tbody>
                     <tfoot>
                         <tr>

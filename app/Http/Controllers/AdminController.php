@@ -19,11 +19,18 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('dashboard');
+        return view('admin.dashboard');
     }
 
     public function pengguna(){
         $pengguna = User::all();
-        return view('pengunjung' ,compact('pengguna'));
+        return view('admin.pengunjung' ,compact('pengguna'));
     }
+
+    #Kelola User
+    public function kelolaUser(){
+        $user = User::all();
+        return view('admin.manajemenpengunjung' , compact('user'));
+    }
+
 }

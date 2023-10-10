@@ -1,13 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
-<header>
-    <div class="container pt-3 pt-xl-3">
+<header class="pt-5">
+    <div class="container pt-4 pt-xl-5">
         <div class="row pt-5">
             <div class="col-md-8 text-center text-md-start mx-auto">
                 <div class="text-center">
                     <h3 class="display-4 fw-bold mb-5"><br><span style="color: rgb(33, 37, 41);">Penikmat Koleksi </span><br><span style="color: rgb(33, 37, 41);">&nbsp;</span>&nbsp;<span class="underline">Tahun Ini</span>.</h3>
                     <p class="fs-5 text-muted mb-5"><br><span style="color: rgb(33, 37, 41);">Pengunjung terbaik kami, ada di sini. Nama dan foto Anda juga bisa muncul di sini. Rajin-rajinlah berkunjung dan membaca</span><br><br></p>
+                    <form class="d-flex justify-content-center flex-wrap" method="post">
+                        <div class="shadow-lg mb-3"></div>
+                        <div class="shadow-lg mb-3"></div>
+                    </form>
                 </div>
             </div>
             <div class="col-12 col-lg-10 mx-auto">
@@ -131,10 +135,55 @@
             <div class="col">
                 <div style="max-width: 450px;">
                     <h3 class="fw-bold pb-md-4" style="font-size: 36.88px;">Survey&nbsp;<span class="underline">Kepuasan</span></h3>
-                    <p class="text-muted py-4 py-md-0">Survey kepuasan perpustakaan adalah alat yang digunakan oleh perpustakaan untuk mengumpulkan umpan balik dari pengunjung guna menilai tingkat kepuasan terhadap layanan dan fasilitas perpustakaan</p>
+                    <p class="text-muted py-4 py-md-0">Survey kepuasan perpustakaan adalah alat yang digunakan oleh perpustakaan untuk mengumpulkan umpan balik dari pengunjung guna menilai tingkat kepuasan terhadao layanan dan fasilitas perpustakaan</p>
                 </div><a class="btn btn-warning me-2 mt-2" role="button" href="#" style="background: var(--bs-indigo);color: var(--bs-white);display: inline-block;border-style: none;">Lihat Selengkapnya</a>
             </div>
         </div>
     </div>
+</section>
+
+
+  <!--</div><section class="desktop">
+    <div class="container py-4 py-xl-5">
+        <div class="bg-primary border rounded border-0 border-primary overflow-hidden"></div>
+    </div>
+    <div class="container py-4 py-xl-5">
+        <div class="row">
+            <div class="col-md-6">
+                <h3 class="display-6 fw-bold pb-md-4">History&nbsp;<span class="underline" style="color: var(--bs-indigo);">Peminjaman</span></h3>
+                <p class="text-muted py-4 py-md-0">Proses dimana individu atau anggota perpustakaan meminjam buku. materi cetak, sumber daya digital atau bahan lainya dari perpustakaan untuk digunakan dalam jangka waktu tertentu.</p><a class="btn btn-warning me-2 mt-2" role="button" href="#" style="background: var(--bs-indigo);color: var(--bs-white);display: inline-block;border-style: none;">Lihat Selengkapnya</a>
+            </div>
+            <div class="col"><img class="rounded img-fluid w-100 fit-cover" style="min-height: 300px;" src="../bootstrap/img/illustrations/teamwork.svg" width="468" height="352"></div>
+        </div>
+        <div class="row gy-4 gy-md-0">
+            <div class="col-md-6 d-flex d-sm-flex d-md-flex justify-content-center align-items-center justify-content-md-start align-items-md-center justify-content-xl-center">
+                <div>
+                    <div class="row gy-2 row-cols-1 row-cols-sm-2">
+                        <div class="col text-center text-md-start">
+                            <div class="d-flex justify-content-center align-items-center justify-content-md-start"></div>
+                        </div>
+                        <div class="col text-center text-md-start">
+                            <div class="d-flex justify-content-center align-items-center justify-content-md-start"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="desktop">
+    <div class="container py-4 py-xl-5">
+        <div class="row gy-4 gy-md-0">
+            <div class="col-md-6 text-center text-md-start d-flex d-sm-flex d-md-flex justify-content-center align-items-center justify-content-md-start align-items-md-center justify-content-xl-center">
+                <div><img class="rounded img-fluid fit-cover" style="min-height: 300px;" src="../bootstrap/img/illustrations/presentation.svg" width="800"></div>
+            </div>
+            <div class="col">
+                <div style="max-width: 450px;">
+                    <h3 class="fw-bold pb-md-4" style="font-size: 36.88px;">Bebas&nbsp;<span class="underline">Tanggungan</span></h3>
+                    <p class="text-muted py-4 py-md-0">Mengacu pada kondisi dimana seorang anggota perpustakaan telah mengembalikan semua bahan pustaka yang dipinjam dan tidak mengembalikan semua bahan pustaka yang dipinjam dan tidak memiliki utang atau denda tertinggal di perpustakaan.</p>
+                </div><a class="btn btn-warning me-2 mt-2" role="button" href="#" style="background: var(--bs-indigo);color: var(--bs-white);display: inline-block;border-style: none;">Lihat Selengkapnya</a>
+            </div>
+        </div>
+    </div>-->
 </section>
 @endsection
