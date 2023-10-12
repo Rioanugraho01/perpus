@@ -97,7 +97,7 @@
                             </div>
                         </div>
                     <div class="row">
-                        <div class="col-lg-6 mb-4">
+                        <div class="col mb-4">
                             <div class="card shadow mb-4">
                                 <div class="card-header d-flex justify-content-between align-items-center">
                                     <h6 class="text-primary fw-bold m-0">Pengunjung Terbaik</h6>

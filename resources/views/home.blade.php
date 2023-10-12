@@ -63,8 +63,8 @@
 <div class="container py-4 py-xl-5">
         <div class="row">
             <div class="col-md-6">
-                <i class="fa fa-user" ></i><span> Mahasiswa</span>
-                <h3 class="display-6 fw-bold pb-md-4">Hallo&nbsp;<span class="underline" style="color: var(--bs-indigo);">Jeni Novitasari</span></h3>
+                <i class="fa fa-user" ></i><span> {{ Auth::user()->status ?? 'User' }}</span>
+                <h3 class="display-6 fw-bold pb-md-4">Hallo&nbsp;<span class="underline" style="color: var(--bs-indigo);">{{ Auth::user()->name }}</span></h3>
                 <p class="text-muted py-4 py-md-0">Selamat Datang di Area Anggota, tempat Anda dapat melihat status keanggotaan dan peminjaman.&nbsp;</p>
             </div>
         </div>

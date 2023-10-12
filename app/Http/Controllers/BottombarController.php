@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 use app\Models\User;
+use App\Models\Pengunjung;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Support\Facades\Auth;
 
@@ -29,26 +31,30 @@ class BottombarController extends Controller
     public function geolokasi() {
         return view('geolokasi');
     }
+    
+    public function post(Request $request){
+        $mytime = Carbon::now();
+    	Pengunjung::create([
+            'name' => $request->name,
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude,
+            'email' => $request->email,
+            'prodi' => $request->prodi,
+            'status' => $request->status,
+            'keperluan' => $request->keperluan,
+            'time' => $mytime
+        ]);
+        return redirect('history');
+    }
+
     public function facescan(){
         return view('facescan');
     }
     # akhirnya presensi
 
-    #ini profile
-    public function profile()
-    {
-    	$user = User::where('id', Auth::user()->id)->first();
-
-    	return view('profile', compact('user'));
-    }
-
-    public function update(Request $request)
-    {
-        $user = User::where('id', Auth::user()->id)->first();
-        $file   = $request->file('image');
-        $result = CloudinaryStorage::upload($file->getRealPath(), $file->getClientOriginalName()); 
-        $user->update(['image' => $result]);
-    	return redirect('profile');
+    public function history(){
+        $pengunjung = Pengunjung::all();
+        return view('historyKunjungan', compact('pengunjung'));
     }
 
 }

@@ -26,26 +26,24 @@
                             <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>Gambar</th>
-                                    <th>Lokasi</th>
                                     <th>Nama</th>
                                     <th>Email</th>
-                                    <th>status</th>
-                                    <th>Tanggal/Jam</th>
+                                    <th>Prodi</th>
+                                    <th>Status</th>
                                     <th>Keperluan</th>
+                                    <th>Tanggal</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($pengguna as $pengguna)
+                                @foreach($pengunjung as $pengguna)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td><img class="rounded-circle me-2" width="30" height="30" src="{{ $pengguna->image }}" /></td>
-                                        <td>{{ $pengguna->location }}</td>
                                         <td>{{ $pengguna->name }}</td>
                                         <td>{{ $pengguna->email }}</td>
-                                        <td>{{ $pengguna->about_me }}</td>
-                                        <td>{{ $pengguna->created_at}}</td>
-                                        <td>{{ $pengguna->created_at }}</td>
+                                        <td>{{ $pengguna->prodi }}</td>
+                                        <td>{{ $pengguna->status }}</td>
+                                        <td>{{ $pengguna->keperluan }}</td>
+                                        <td>{{ $pengguna->time }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>

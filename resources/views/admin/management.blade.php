@@ -4,7 +4,7 @@
 <div class="container-fluid">
     <h3 class="text-dark mb-4">Manajemen Pengunjung</h3>
     <div class="card shadow">
-        <div class="card-header py-3" style="text-align: right;"><a href="{{ route('management.create') }}" class="btn btn-primary" type="button" style="font-size: 12px;"><i class="fas fa-plus fa-2x text-white-300" style="font-size: 12px;"></i></a></div>
+        <div class="card-header py-3" style="text-align: right;"><a href="{{ route('user.create') }}" class="btn btn-primary" type="button" style="font-size: 12px;"><i class="fas fa-plus fa-2x text-white-300" style="font-size: 12px;"></i></a></div>
         <div class="card-body">
             <div class="row">
                 <div class="col-md-6 text-nowrap">
@@ -38,15 +38,15 @@
                         @foreach($user as $user)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td><img class="rounded-circle me-2" width="30" height="30" src="{{ $user->image }}" /></td>
+                            <td><img class="rounded-circle me-2" width="30" height="30" src="{{ $user->image ?? asset('assets/img/user-profile-icon-front-side_kljtj0.jpg') }}" /></td>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
                             <td>{{ $user->prodi }}</td>
                             <td>{{ $user->phone }}</td>
                             <td>{{ $user->status }}</td>
                             <td>{{ $user->alamat }}</td>
-                            <td><form action="{{ route('management.destroy',$user->id) }}" method="post">
-                                <a href="{{ route('management.edit',$user->id) }}">
+                            <td><form action="{{ route('user.destroy',$user->id) }}" method="post">
+                                <a href="{{ route('user.edit',$user->id) }}">
                                 <i class="fas fa-edit fa-2x text-primary pr-1" style="font-size: 20px; font-color: red"></i></a>
                                 @csrf @method('DELETE')
                                 <button type="submit" class="border-0 bg-transparent"><i class="fas fa-trash fa-2x text-danger" style="font-size: 20px;"></i></button></form>

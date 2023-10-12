@@ -5,32 +5,32 @@
     <div class="d-sm-flex justify-content-between align-items-center mb-4">
         <h3 class="text-dark mb-0">Buat User</h3>
     </div>
-    <form action="{{ route('management.update', $user->id) }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('user.update', $user->id) }}" method="POST" enctype="multipart/form-data">
         @csrf @method('PUT')
         <div class="card shadow mb-3">
             <div class="card-header py-3">
                 <p class="text-primary m-0 fw-bold">Isi Semua Tabel *</p>
             </div>
             <div class="card-body">
-                <div class="container-fluid d-flex align-items-center justify-content-center flex-column py-4 mb-4">
-                    <img class="rounded-circle mb-3 mt-4 img-fluid" src="{{ Auth::user()->image }}" style="display: inline;max-height: 110px;"/>
+                <div class="container-fluid d-flex align-items-center justify-content-center flex-column py-4 mb-4 border rounded">
+                    <img id="output" src="{{ $user->image }}" class="rounded-circle mb-3 mt-4 img-fluid border object-fit-none" width="110px" height="110px" style="display: inline;height: 110px; width: 110px"/>
                    <div id="photoBtn" class="btn btn-secondary btn-sm d-flex justify-content-center" type="button">
-                    <label class="form-label text-white m-1 d-flex justify-content-center" for="customFile1">Upload</label> 
-                    <input name="image" type="file" class="form-control d-none" id="customFile1" /> 
+                    <label class="form-label text-white m-1 d-flex justify-content-center" for="customFile1">Upload Foto</label> 
+                    <input name="image" type="file" class="form-control d-none" id="customFile1" accept="image/*" onchange="loadFile(event)"/> 
                    </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-12 col-md-8 col-lg-8">
-                        <div class="mb-3"><label class="form-label" for="name"><strong>Nama Lengkap *</strong></label><input id="name" class="form-control" type="text" placeholder="{{ Auth::user()->name }}" name="name" required /></div>
+                        <div class="mb-3"><label class="form-label" for="name"><strong>Nama Lengkap *</strong></label><input id="name" class="form-control" type="text" placeholder="{{ $user->name }}" name="name" required /></div>
                     </div>
                     <div class="col-sm-12 col-md-4 col-lg-4">
-                        <div class="mb-3"><label class="form-label" for="NIM/NIPPK/No.Telp"><strong>NIM/NIPPK/No.Telp *</strong><br /></label><input id="NIM/NIPPK/No.Telp" class="form-control" type="text" placeholder="{{ Auth::user()->email }}" name="email" required /></div>
+                        <div class="mb-3"><label class="form-label" for="NIM/NIPPK/No.Telp"><strong>NIM/NIPPK/No.Telp *</strong><br /></label><input id="NIM/NIPPK/No.Telp" class="form-control" type="text" placeholder="{{ $user->email }}" name="email" required /></div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-12 col-md-8 col-lg-5">
                     <div class="mb-3"><label class="form-label" for="country"><strong>Prodi *</strong></label><select class="form-select countries order-alpha limit-pop-1000000 presel-MX group-continents group-order-na" name="prodi" required>
-                            <option value="{{ Auth::user()->prodi }}">{{ Auth::user()->prodi }}</option>
+                            <option value="{{ $user->prodi }}">{{ $user->prodi }}</option>
                             <option value="Agribisnis">Agribisnis</option>
                             <option value="Manajemen Bisnis dan Pariwisata">Manajemen Bisnis dan Pariwisata</option>
                             <option value="Teknik Manufaktur Kapal">Teknik Manufaktur Kapal</option>
@@ -43,11 +43,11 @@
                         </select></div>
                     </div>
                     <div class="col-sm-12 col-md-4 col-lg-4">
-                        <div class="mb-3"><label class="form-label" for="address"><strong>Alamat *</strong><br /></label><input id="alamat" class="form-control" type="text" placeholder="{{ Auth::user()->alamat }}" name="alamat" required /></div>
+                        <div class="mb-3"><label class="form-label" for="address"><strong>Alamat *</strong><br /></label><input id="alamat" class="form-control" type="text" placeholder="{{ $user->alamat }}" name="alamat" required /></div>
                     </div>
                     <div class="col-sm-12 col-md-4 col-lg-3">
                     <div class="mb-3"><label class="form-label" for="status"><strong>status</strong></label><select class="form-select countries order-alpha limit-pop-1000000 presel-MX group-continents group-order-na" name="status" required>
-                        <option value="{{ Auth::user()->alamat }}">{{ Auth::user()->status }}</option>
+                        <option value="{{ $user->status }}">{{ $user->status }}</option>
                         <option value="Dosen">Dosen</option>
                         <option value="Umum">Umum</option>
                         <option value="Mahasiswa">Mahasiswa</option>
@@ -64,5 +64,15 @@
         </div>
     </form>
 </div>
+
+<script>
+  var loadFile = function(event) {
+    var output = document.getElementById('output');
+    output.src = URL.createObjectURL(event.target.files[0]);
+    output.onload = function() {
+      URL.revokeObjectURL(output.src) // free memory
+    }
+  };
+</script>
 @endsection
 

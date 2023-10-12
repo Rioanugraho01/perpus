@@ -5,18 +5,18 @@
     <div class="d-sm-flex justify-content-between align-items-center mb-4">
         <h3 class="text-dark mb-0">Buat User</h3>
     </div>
-    <form action="{{ route('management.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('user.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="card shadow mb-3">
             <div class="card-header py-3">
                 <p class="text-primary m-0 fw-bold">Isi Semua Tabel *</p>
             </div>
             <div class="card-body">
-                <div class="container-fluid d-flex align-items-center justify-content-center flex-column py-4 mb-4">
-                    <img class="rounded-circle mb-3 mt-4 img-fluid" src="{{ Auth::user()->image }}" style="display: inline;max-height: 110px;"/>
+                <div class="container-fluid d-flex align-items-center justify-content-center flex-column py-4 mb-4 border rounded">
+                    <img id="output" src="{{ asset('assets/img/user-profile-icon-front-side_kljtj0.jpg') }}" class="rounded-circle mb-3 mt-4 img-fluid border object-fit-none" width="110px" height="110px" style="display: inline;height: 110px; width: 110px"/>
                    <div id="photoBtn" class="btn btn-secondary btn-sm d-flex justify-content-center" type="button">
-                    <label class="form-label text-white m-1 d-flex justify-content-center" for="customFile1">Upload</label> 
-                    <input name="image" type="file" class="form-control d-none" id="customFile1" /> 
+                    <label class="form-label text-white m-1 d-flex justify-content-center" for="customFile1">Upload Foto</label> 
+                    <input name="image" type="file" class="form-control d-none" id="customFile1" accept="image/*" onchange="loadFile(event)"/> 
                    </div>
                 </div>
                 <div class="row">
@@ -62,4 +62,14 @@
         </div>
     </form>
 </div>
+
+<script>
+  var loadFile = function(event) {
+    var output = document.getElementById('output');
+    output.src = URL.createObjectURL(event.target.files[0]);
+    output.onload = function() {
+      URL.revokeObjectURL(output.src) // free memory
+    }
+  };
+</script>
 @endsection

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Pengunjung;
 
 class AdminController extends Controller
 {
@@ -22,15 +23,16 @@ class AdminController extends Controller
         return view('admin.dashboard');
     }
 
-    public function pengguna(){
-        $pengguna = User::all();
-        return view('admin.pengunjung' ,compact('pengguna'));
-    }
-
     #Kelola User
     public function kelolaUser(){
         $user = User::all();
         return view('admin.manajemenpengunjung' , compact('user'));
+    }
+
+    #Pengunjung Perpustakaan
+    public function pengunjung(){
+        $pengunjung = Pengunjung::all();
+        return view('admin.pengunjung', compact('pengunjung'));
     }
 
 }

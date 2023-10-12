@@ -15,24 +15,26 @@
                             <thead class="thead-dark">
                                 <tr style="background: var(--bs-indigo);">
                                     <th class="text-center">No</th>
-                                    <th class="text-center">Waktu</th>
-                                    <th class="text-center">Tanggal</th>
-                                    <th class="text-center filter-false sorter-false">Keperluan</th>
+                                    <th class="text-center">Nama</th>
+                                    <th class="text-center">E-mail</th>
+                                    <th class="text-center">Prodi</th>
+                                    <th class="text-center">Status</th>
+                                    <th class="text-center">Keperluan</th>
+                                    <th class="text-center filter-false sorter-false">Tanggal</th>
                                 </tr>
                             </thead>
                             <tbody class="text-center">
+                                @foreach($pengunjung as $user)
                                 <tr>
-                                    <td>1.</td>
-                                    <td>09.00</td>
-                                    <td>02/01/2023</td>
-                                    <td class="text-center align-middle" style="max-height: 60px;height: 60px;">Mengerjakan Tugas</td>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $user->name }}</td>
+                                    <td>{{ $user->email }}</td>
+                                    <td>{{ $user->prodi }}</td>
+                                    <td>{{ $user->status }}</td>
+                                    <td>{{ $user->keperluan }}</td>
+                                    <td class="text-center align-middle" style="max-height: 60px;height: 60px;">{{ $user->time }}</td>
                                 </tr>
-                                <tr>
-                                    <td>2.</td>
-                                    <td>08.00</td>
-                                    <td>12/01/2023</td>
-                                    <td class="text-center align-middle" style="max-height: 60px;height: 60px;">Membaca Buku</td>
-                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

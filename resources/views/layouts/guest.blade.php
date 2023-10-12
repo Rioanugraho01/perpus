@@ -14,40 +14,9 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 </head>
 <body>
-    <nav class="navbar navbar-light navbar-expand-md fixed-top navbar-shrink py-3" id="mainNav">
-        <div class="container"><a class="navbar-brand d-flex align-items-center" href="/"><span class="desktop" style="text-align: center;">Perpustakaan <br>Poliwangi</span><span class="mobile">Perpustakaan Poliwangi</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navcol-1">
-                <ul class="navbar-nav mx-auto">
-                    <li class="nav-item desktop"><a class="nav-link {{ (Request::is('home') ? 'active' : '') }}" href="{{ url('home') }}" style="text-align: center;">Halaman<br>Utama</a></li>
-                    <li class="nav-item desktop"><a class="nav-link {{ (Request::is('historykunjungan') ? 'active' : '') }}" href="{{ url('historykunjungan')}}" style="text-align: center;">History <br>Kunjungan</a></li>
-                    <li class="nav-item desktop"><a class="nav-link {{ (Request::is('surveikepuasan') ? 'active' : '') }}" href="{{ url('surveikepuasan') }}" style="text-align: center;">Survei <br>Kepuasan</a></li>
-
-
-                    <li class="nav-item mobile"><a class="nav-link mb-1 {{ (Request::is('home') ? 'active' : '') }}" href="{{ url('home') }}">Halaman Utama</a></li>
-                    <li class="nav-item mobile"><a class="nav-link mb-1 {{ (Request::is('historykunjungan') ? 'active' : '') }}" href="{{ url('historykunjungan')}}">History Kunjungan</a></li>
-                    <li class="nav-item mobile"><a class="nav-link mb-1 {{ (Request::is('surveikepuasan') ? 'active' : '') }}" href="{{ url('surveikepuasan') }}">Survei Kepuasan</a></li>
-                    @guest
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                </ul><a class="btn btn-primary shadow" role="button" href="{{ route('register') }}">Daftar</a>
-            </div>
+    <nav class="navbar navbar-light navbar-expand-md fixed-top navbar-shrink border-0" id="mainNav">
+        <div class="container d-flex justify-content-center">
+            <a class="navbar-brand d-flex justify-content-center align-items-center" href="/"><img src="https://v2.poliwangi.ac.id/wp-content/uploads/2020/09/logo-poliwangi.png" width="70px" alt=""><span class="px-4">Perpustakaan <br> Poliwangi</span></a>
         </div>
     </nav>
 

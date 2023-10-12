@@ -69,7 +69,7 @@
         </ion-icon>
         <ion-icon id="presensi" name="reader-outline" class="icons {{ (Request::is('presensi') ? 'actives' : '') }}" onclick="change(this); return presensi();">
         </ion-icon>
-        <ion-icon id="history" name="list-circle-outline" class="icons {{ (Request::is('historykunjungan') ? 'actives' : '') }}" onclick="change(this); return historykunjungan();">
+        <ion-icon id="history" name="list-circle-outline" class="icons {{ (Request::is('history') ? 'actives' : '') }}" onclick="change(this); return historykunjungan();">
         </ion-icon>
         <ion-icon id="profile" name="person-outline" class="icons {{ (Request::is('profile') ? 'actives' : '') }}" onclick="change(this); return profile();">
         </ion-icon></div>
@@ -155,7 +155,7 @@
             window.location.href = "{{ url('presensi')}}";
         });
         $("#history").on('click', function() {
-            window.location = "{{ url('historykunjungan')}}";
+            window.location = "{{ url('history')}}";
         });
         $("#profile").on('click', function() {
             window.location = "{{ url('profile')}}";
