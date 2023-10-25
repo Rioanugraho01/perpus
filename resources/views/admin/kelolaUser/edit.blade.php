@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="container-fluid"><a class="btn btn-link link-primary mb-3" role="button" href="services.html"><i class="fas fa-arrow-left"></i> Back</a>
+<div class="container-fluid"><a class="btn btn-link link-primary mb-3" role="button" href="{{ url('management') }}"><i class="fas fa-arrow-left"></i> Back</a>
     <div class="d-sm-flex justify-content-between align-items-center mb-4">
         <h3 class="text-dark mb-0">Buat User</h3>
     </div>
@@ -13,7 +13,7 @@
             </div>
             <div class="card-body">
                 <div class="container-fluid d-flex align-items-center justify-content-center flex-column py-4 mb-4 border rounded">
-                    <img id="output" src="{{ $user->image }}" class="rounded-circle mb-3 mt-4 img-fluid border object-fit-none" width="110px" height="110px" style="display: inline;height: 110px; width: 110px"/>
+                    <img id="output" src="{{ $user->image ?? asset('assets/img/user-profile-icon-front-side_kljtj0.jpg') }}" class="rounded-circle mb-3 mt-4 img-fluid border object-fit-none" width="110px" height="110px" style="display: inline;height: 110px; width: 110px"/>
                    <div id="photoBtn" class="btn btn-secondary btn-sm d-flex justify-content-center" type="button">
                     <label class="form-label text-white m-1 d-flex justify-content-center" for="customFile1">Upload Foto</label> 
                     <input name="image" type="file" class="form-control d-none" id="customFile1" accept="image/*" onchange="loadFile(event)"/> 
@@ -21,10 +21,10 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-12 col-md-8 col-lg-8">
-                        <div class="mb-3"><label class="form-label" for="name"><strong>Nama Lengkap *</strong></label><input id="name" class="form-control" type="text" placeholder="{{ $user->name }}" name="name" required /></div>
+                        <div class="mb-3"><label class="form-label" for="name"><strong>Nama Lengkap *</strong></label><input id="name" class="form-control" type="text" placeholder="{{ $user->name }}" name="name" value="{{ $user->name }}" required /></div>
                     </div>
                     <div class="col-sm-12 col-md-4 col-lg-4">
-                        <div class="mb-3"><label class="form-label" for="NIM/NIPPK/No.Telp"><strong>NIM/NIPPK/No.Telp *</strong><br /></label><input id="NIM/NIPPK/No.Telp" class="form-control" type="text" placeholder="{{ $user->email }}" name="email" required /></div>
+                        <div class="mb-3"><label class="form-label" for="NIM/NIPPK/No.Telp"><strong>NIM/NIPPK/No.Telp *</strong><br /></label><input id="NIM/NIPPK/No.Telp" class="form-control" type="text" placeholder="{{ $user->email }}" value="{{ $user->email }}" name="email" required /></div>
                     </div>
                 </div>
                 <div class="row">

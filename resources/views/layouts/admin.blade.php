@@ -2,37 +2,41 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Perpustakaan Poliwangi</title>
+    <link rel="icon" type="image/png" href="https://poliwangi.ac.id/en/seleksipegawaikontrak2021/logo-poliwangi-4/"/>
     <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/table.min.css') }}">
+    <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap">
     <link rel="stylesheet" href="{{ asset('assets/fonts/fontawesome-all.min.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-<div id="wrapper">
-        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
+<div class="p-2 p-sm-2 p-md-2 p-lg-4" id="wrapper">
+        <nav class="navbar align-items-start sidebar sidebar-dark accordion bg-primary p-0 rounded-5 py-4 shadow-lg">
             <div class="container-fluid d-flex flex-column p-0"><a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
-                    <div class="sidebar-brand-icon rotate-n-15"></div>
-                    <div class="sidebar-brand-text mx-3"><span>Perpustakaan<br>poliwangi</span></div>
+                    <div class="sidebar-brand-icon">
+                        <img src="https://poliwangi.ac.id/en/seleksipegawaikontrak2021/logo-poliwangi-4/" width="55px" height="55px" alt="">
+                    </div>
                 </a>
                 <hr class="sidebar-divider my-0">
-                <ul class="navbar-nav text-light" id="accordionSidebar">
+                <ul class="navbar-nav" id="accordionSidebar">
                     <li class="nav-item"><a class="nav-link {{ (Request::is('dashboard') ? 'active' : '') }}" href="{{ url('dashboard') }}"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+                    <li class="nav-item"><a class="nav-link {{ (Request::is('geolocation') ? 'active' : '') }}" href="{{ url('geolocation') }}"><i class="fa fa-globe"></i><span>Geolokasi</span></a></li>
                     <li class="nav-item"><a class="nav-link {{ (Request::is('pengunjung') ? 'active' : '') }}" href="{{ url('pengunjung') }}"><i class="fas fa-user"></i><span>Data Pengunjung</span></a></li>
-                    <li class="nav-item"><a class="nav-link {{ (Request::is('management') ? 'active' : '') }}" href="{{ url('management') }}"><i class="fas fa-table"></i><span>Data Kelola User</span></a></li>
-                    <li class="nav-item"><a class="nav-link {{ (Request::is('manajemenpengunjung') ? 'active' : '') }}" href="{{ url('manajemenpengunjung') }}"><i class="fas fa-table"></i><span>Edit Survei Kepuasan</span></a></li>
-                    <li class="nav-item"></li>
-                    <li class="nav-item"><a class="nav-link" href="register.html"></a></li>
+                    <li class="nav-item"><a class="nav-link {{ (Request::is('management') ? 'active' : '') }}" href="{{ url('management') }}"><i class="fa fa-users"></i><span>Data Kelola User</span></a></li>
+                    <li class="nav-item"><a class="nav-link {{ (Request::is('manajemenpengunjung') ? 'active' : '') }}" href="{{ url('manajemenpengunjung') }}"><i class="fa fa-book"></i><span>Edit Survei Kepuasan</span></a></li>
                 </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
             </div>
         </nav>
-        <div class="d-flex flex-column" id="content-wrapper">
+        <div class="d-flex flex-column px-2 px-sm-2 px-md-2 px-lg-4 bg-white pt-sm-2 pt-md-2 pt-lg-4" id="content-wrapper">
             <div id="content">
-                <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
+                <nav class="navbar navbar-light navbar-expand bg-white border topbar static-top rounded-4 shadow">
                     <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle me-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
                         <form class="d-none d-sm-inline-block me-auto ms-md-3 my-2 my-md-0 mw-100 navbar-search">
                             <div class="input-group"><input class="bg-light form-control border-0 small" type="text" placeholder="Search for ..."><button class="btn btn-primary py-0" type="button"><i class="fas fa-search"></i></button></div>
@@ -47,7 +51,7 @@
                                     </form>
                                 </div>
                             </li>
-                            <li class="nav-item dropdown no-arrow mx-1">
+                            <li class="d-none nav-item dropdown no-arrow mx-1">
                                 <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="badge bg-danger badge-counter">3+</span><i class="fas fa-bell fa-fw"></i></a>
                                     <div class="dropdown-menu dropdown-menu-end dropdown-list animated--grow-in">
                                         <h6 class="dropdown-header">alerts center</h6><a class="dropdown-item d-flex align-items-center" href="#">
@@ -75,7 +79,7 @@
                                     </div>
                                 </div>
                             </li>
-                            <li class="nav-item dropdown no-arrow mx-1">
+                            <li class="nav-item dropdown no-arrow mx-1 d-none">
                                 <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="badge bg-danger badge-counter">7</span><i class="fas fa-envelope fa-fw"></i></a>
                                     <div class="dropdown-menu dropdown-menu-end dropdown-list animated--grow-in">
                                         <h6 class="dropdown-header">alerts center</h6><a class="dropdown-item d-flex align-items-center" href="#">
@@ -117,11 +121,12 @@
                             </li>
                             <div class="d-none d-sm-block topbar-divider"></div>
                             <li class="nav-item dropdown no-arrow">
-                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="d-none d-lg-inline me-2 text-gray-600 small">Admin Perpus</span><img class="border rounded-circle img-profile" src="assets/img/avatars/avatar1.jpeg"></a>
-                                    <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in"><a class="dropdown-item" href="#"><i class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Profile</a><a class="dropdown-item" href="#"><i class="fas fa-cogs fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Settings</a><a class="dropdown-item" href="#"><i class="fas fa-list fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Activity log</a>
-                                        <div class="dropdown-divider"></div><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Logout
-                                        </a>
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="d-none d-lg-inline me-2 text-gray-600 small">{{ Auth::user()->name }}</span><img class="border rounded-circle img-profile" src="{{ Auth::user()->image ?? asset('assets/img/user-profile-icon-front-side_kljtj0.jpg') }}"></a>
+                                    <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in">
+                                        <div class="dropdown-divider d-none"></div>
+                                            <a class="dropdown-item text-danger" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                                <i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-danger"></i>&nbsp;Logout
+                                            </a>
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
@@ -131,69 +136,17 @@
                         </ul>
                     </div>
                 </nav>
-                <main class="py-0">
+                <main class="py-0" >
                     @yield('content')
                 </main>
-        </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+        </div>
+        <a class="d-none border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
     </div>
-    <script src="../assets/js/chart.min.js"></script>
-    <script src="../assets/js/bs-init.js"></script>
-    <script src="../assets/js/theme.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-<script src="../assets/js/calendar.js"></script>
-<script>
-    (function ($) {
-        $.bsCalendar.setDefault('width', 5000);
-        $('#calendar_dropdown').bsCalendar({width: 300});
-        $('#calendar_inline').bsCalendar({width: '300px'});
-        $('#calendar_inline').bsCalendar('setDate', '2023-12-24');
-        $('#calendar_offcanvas').bsCalendar({width: '80%'});
-        $('#calendar_navbar').bsCalendar({width: 300});
-
-
-    }(jQuery));
-</script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-1VDDWMRSTH"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-1VDDWMRSTH');
-</script>
-<script>
-try {
-  fetch(new Request("https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js", { method: 'HEAD', mode: 'no-cors' })).then(function(response) {
-    return true;
-  }).catch(function(e) {
-    var carbonScript = document.createElement("script");
-    carbonScript.src = "//cdn.carbonads.com/carbon.js?serve=CK7DKKQU&placement=wwwjqueryscriptnet";
-    carbonScript.id = "_carbonads_js";
-    document.getElementById("carbon-block").appendChild(carbonScript);
-  });
-} catch (error) {
-  console.log(error);
-}
-</script>
-
-<script>
-        const togglePassword = document.querySelector("#togglePassword");
-        const password = document.querySelector("#password");
-
-        togglePassword.addEventListener("click", function () {
-            // toggle the type attribute
-            const type = password.getAttribute("type") === "password" ? "text" : "password";
-            password.setAttribute("type", type);
-            
-            // toggle the icon
-            this.classList.toggle("bi-eye");
-        });
-
-        // prevent form submit
-        const form = document.querySelector("form");
-        form.addEventListener('submit', function (e) {
-            e.preventDefault();
-        });
-    </script>
+    <script src="{{ asset('assets/js/chart.min.js' )}}"></script>
+    <script src="{{ asset('assets/js/bs-init.js') }}"></script>
+    <script src="{{ asset('assets/js/theme.js') }}"></script>
+    <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
 </body>
 </html>

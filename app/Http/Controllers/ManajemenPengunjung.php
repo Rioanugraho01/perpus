@@ -27,28 +27,39 @@ class ManajemenPengunjung extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $image  = $request->file('image');
-        $result = CloudinaryStorage::upload($image->getRealPath(), $image->getClientOriginalName()); 
+    { 
+
         $request->validate([
         'name' => 'required|max:255',
-        'email' => 'required|max:255',
+        'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
         'prodi' => 'required',
         'status' => 'required',
         'alamat' => 'required|max:255',
         'password' => 'required',
         ]);
-        User::create([
-            'image' => $result,
-            'name' => $request->name,
-            'email' => $request->email,
-            'prodi' => $request->prodi,
-            'status' => $request->status,
-            'alamat' => $request->alamat,
-            'password' => $request->password,
-        ]);
-        return redirect()->route('user.index')
-        ->with('success', 'Data Saved');
+        if ($request->hasFile('image')) {
+            $image  = $request->file('image');
+            $result = CloudinaryStorage::upload($image->getRealPath(), $image->getClientOriginalName()); 
+            User::create([
+                'image' => $result,
+                'name' => $request->name,
+                'email' => $request->email,
+                'prodi' => $request->prodi,
+                'status' => $request->status,
+                'alamat' => $request->alamat,
+                'password' => $request->password,
+            ]);
+        }else{
+            User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'prodi' => $request->prodi,
+                'status' => $request->status,
+                'alamat' => $request->alamat,
+                'password' => $request->password,
+            ]);
+        }
+        return redirect()->route('user.index')->with('success', 'Data Saved');
     }
     /**
      * Update the specified resource in storage.
@@ -67,20 +78,31 @@ class ManajemenPengunjung extends Controller
             'alamat' => 'required|max:255',
             'password' => 'required'
         ]);
-        $user = User::find($id);
-        $file   = $request->file('image');
-        $result = CloudinaryStorage::replace($user->image, $file->getRealPath(), $file->getClientOriginalName());
-        $user->update([
-            'image' => $result,
-            'name' => $request->name,
-            'email' => $request->email,
-            'prodi' => $request->prodi,
-            'status' => $request->status,
-            'alamat' => $request->alamat,
-            'password' => $request->password,
-        ]);
-        return redirect()->route('user.index')
-        ->with('success', 'Data Saved');
+        if($request->hasFile('image')){
+            $user = User::find($id);
+            $file   = $request->file('image');
+            $result = CloudinaryStorage::replace($user->image, $file->getRealPath(), $file->getClientOriginalName());
+            $user->update([
+                'image' => $result,
+                'name' => $request->name,
+                'email' => $request->email,
+                'prodi' => $request->prodi,
+                'status' => $request->status,
+                'alamat' => $request->alamat,
+                'password' => $request->password,
+            ]);
+        }else{
+            $user = User::find($id);
+            $user->update([
+                'name' => $request->name,
+                'email' => $request->email,
+                'prodi' => $request->prodi,
+                'status' => $request->status,
+                'alamat' => $request->alamat,
+                'password' => $request->password,
+            ]);
+        }
+        return redirect()->route('user.index')->with('success', 'Data Saved');
     }
     /**
      * Remove the specified resource from storage.

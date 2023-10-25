@@ -20,13 +20,28 @@ class profileController extends Controller
 
     public function update(Request $request)
     {
-
-        $user = User::where('id', Auth::user()->id)->first();
-    	$user->name = $request->name;
-    	$user->email = $request->email;
-    	$user->no_telp = $request->no_telp;
-    	$user->update();
-        return redirect()->route('profile.index')
-        ->with('success', 'Data Saved');
+        $user = User::findOrFail(Auth::user()->id);
+        if($request->hasFile('image')){
+            $file   = $request->file('image');
+            $result = CloudinaryStorage::replace($user->image, $file->getRealPath(), $file->getClientOriginalName());
+            $user->update([
+                'image' => $result,
+                'name' => $request->name,
+                'prodi' => $request->prodi,
+                'status' => $request->status,
+                'alamat' => $request->alamat,
+            ]);
+        }else{
+            $file   = $request->file('image');
+            $result = CloudinaryStorage::replace($user->image, $file->getRealPath(), $file->getClientOriginalName());
+            $user->update([
+                'image' => $result,
+                'name' => $request->name,
+                'prodi' => $request->prodi,
+                'status' => $request->status,
+                'alamat' => $request->alamat,
+            ]);
+        }
+        return redirect()->route('profile')->with('success', 'Data Saved');
     }
 }

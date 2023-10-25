@@ -106,7 +106,7 @@
         <div class="row">
             <div class="col-md-6">
                 <h3 class="display-6 fw-bold pb-md-4">History&nbsp;<span class="underline" style="color: var(--bs-indigo);">Kunjungan</span></h3>
-                <p class="text-muted py-4 py-md-0">History Kunjungan adalah kunjungan yang dilakukan ke perpustakaan untuk tujuan pendidikan, penelitian, atau minat pribadi dalam akses sumber daya literatur dan informasi yang tersedia di dalamnya.&nbsp;</p><a class="btn btn-warning me-2 mt-2" role="button" href="HistoryKunjungan.html" style="background: var(--bs-indigo);color: var(--bs-white);display: inline-block;border-style: none;">Lihat Selengkapnya</a>
+                <p class="text-muted py-4 py-md-0">History Kunjungan adalah kunjungan yang dilakukan ke perpustakaan untuk tujuan pendidikan, penelitian, atau minat pribadi dalam akses sumber daya literatur dan informasi yang tersedia di dalamnya.&nbsp;</p><a class="btn btn-warning me-2 mt-2" role="button" href="{{ url('history') }}" style="background: var(--bs-indigo);color: var(--bs-white);display: inline-block;border-style: none;">Lihat Selengkapnya</a>
             </div>
             <div class="col"><img class="rounded img-fluid w-100 fit-cover" style="min-height: 300px;" src="../bootstrap/img/illustrations/teamwork.svg" width="468" height="352"></div>
         </div>
@@ -136,7 +136,7 @@
                 <div style="max-width: 450px;">
                     <h3 class="fw-bold pb-md-4" style="font-size: 36.88px;">Survey&nbsp;<span class="underline">Kepuasan</span></h3>
                     <p class="text-muted py-4 py-md-0">Survey kepuasan perpustakaan adalah alat yang digunakan oleh perpustakaan untuk mengumpulkan umpan balik dari pengunjung guna menilai tingkat kepuasan terhadao layanan dan fasilitas perpustakaan</p>
-                </div><a class="btn btn-warning me-2 mt-2" role="button" href="#" style="background: var(--bs-indigo);color: var(--bs-white);display: inline-block;border-style: none;">Lihat Selengkapnya</a>
+                </div><a class="btn btn-warning me-2 mt-2" role="button" href="{{ url('surveikepuasan') }}" style="background: var(--bs-indigo);color: var(--bs-white);display: inline-block;border-style: none;">Lihat Selengkapnya</a>
             </div>
         </div>
     </div>

@@ -11,13 +11,14 @@
                         @csrf
 
                         <div class="mb-3">
-                            <input id="name" type="text" class="shadow-sm form-control @error('name') is-invalid @enderror" placeholder="Nim/Nippk/no.telp" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                            <input id="name" type="text" class="shadow-sm form-control @error('name') is-invalid @enderror" placeholder="Username" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
                             @error('name')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
+
 
                         <div class="mb-3">
                             <input id="email" type="email" class="shadow-sm form-control @error('email') is-invalid @enderror" placeholder="Email" name="email" value="{{ old('email') }}" required autocomplete="email">
@@ -27,6 +28,8 @@
                                 </span>
                             @enderror
                         </div>
+
+
 
                         <div class="mb-3">
                             <input id="password" type="password" class="shadow-sm form-control @error('password') is-invalid @enderror" placeholder="Password" name="password" required autocomplete="new-password">
@@ -53,4 +56,19 @@
             </div>
         </div>
     </section>
+
+    <script>
+        const statusSelect = document.getElementById('status');
+        const jurusanSelect = document.getElementById('jurusan');
+
+        statusSelect.addEventListener('change', function() {
+        const selectedStatus = this.value;
+
+        if (selectedStatus === 'Mahasiswa') {
+            jurusanSelect.style.display = 'block';
+        } else {
+            jurusanSelect.style.display = 'none';
+        }
+        });
+  </script>
 @endsection

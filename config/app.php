@@ -191,7 +191,7 @@ return [
     */
     
     'aliases' => Facade::defaultAliases()->merge([
-        // ...
     ])->toArray(),
     'Cloudinary' => CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary::class,
+
 ];

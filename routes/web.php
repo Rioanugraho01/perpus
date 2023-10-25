@@ -21,7 +21,13 @@ Route::get('/', function () {
 Route::group(['middleware' => 'role:admin'], function () {
 
     Route::get('/dashboard', [App\Http\Controllers\AdminController::class, 'index'])->name('dashboard');
+    Route::post('/dashboard', [App\Http\Controllers\AdminController::class, 'index'])->name('dashboard');
+    Route::get('/geolocation', [App\Http\Controllers\AdminController::class, 'lokasi'])->name('geolocation');
+    Route::post('geolocation/post', [App\Http\Controllers\AdminController::class, 'post'])->name('geolocation');
+    Route::delete('/geolocation/{koordinat}', [App\Http\Controllers\AdminController::class, 'destroy'])->name('geolocation');
     Route::get('/pengunjung', [App\Http\Controllers\AdminController::class, 'pengunjung'])->name('pengunjung');
+    Route::get('/pengunjung/export_excel', [App\Http\Controllers\AdminController::class, 'simpan'])->name('pengunjung');
+    
     Route::get('/management', [App\Http\Controllers\ManajemenPengunjung::class, 'index'])->name('user.index');
     
     Route::get('/user/create', [App\Http\Controllers\ManajemenPengunjung::class, 'create'])->name('user.create');
@@ -34,10 +40,11 @@ Route::group(['middleware' => 'role:admin'], function () {
 
 Auth::routes();
 
+Route::get('/surveikepuasan', [App\Http\Controllers\SurveiKepuasan::class, 'index'])->name('surveikepuasan');
+Route::get('/history', [App\Http\Controllers\BottombarController::class, 'history'])->name('historyKunjungan');
+
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-    Route::get('/history', [App\Http\Controllers\BottombarController::class, 'history'])->name('historyKunjungan');
-    Route::get('/surveikepuasan', [App\Http\Controllers\SurveiKepuasan::class, 'index'])->name('surveikepuasan');
     Route::get('/historypeminjaman', [App\Http\Controllers\HistoryPeminjaman::class, 'index'])->name('historypeminjaman');
     Route::get('/bebastanggungan', [App\Http\Controllers\BebasTanggungan::class, 'index'])->name('bebastanggungan');
     
@@ -48,8 +55,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/facescan', [App\Http\Controllers\BottombarController::class, 'facescan'])->name('facescan');
     
     #ini profile
-    Route::get('/profile', [App\Http\Controllers\profileController::class, 'index'])->name('profile');
-    Route::post('profile', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile');
+    Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
+    Route::put('profile', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile');
 });
 
 

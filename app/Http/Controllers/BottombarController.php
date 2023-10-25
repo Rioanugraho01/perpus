@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Koordinat;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use app\Models\User;
@@ -11,11 +12,6 @@ use Illuminate\Support\Facades\Auth;
 
 class BottombarController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Show the application dashboard.
      *
@@ -29,11 +25,21 @@ class BottombarController extends Controller
     }
 
     public function geolokasi() {
-        return view('geolokasi');
+        $coordinat1 = Koordinat::pluck('koordinat1');
+        $coordinat2 = Koordinat::pluck('koordinat2');
+        $coordinat3 = Koordinat::pluck('koordinat3');
+        $coordinat4 = Koordinat::pluck('koordinat4');
+
+        $koordinat1 = str_replace(['["', '"]'], '', $coordinat1);
+        $koordinat2 = str_replace(['["', '"]'], '', $coordinat2);
+        $koordinat3 = str_replace(['["', '"]'], '', $coordinat3);
+        $koordinat4 = str_replace(['["', '"]'], '', $coordinat4);
+        return view('geolokasi', compact('koordinat1','koordinat2','koordinat3','koordinat4'));
     }
     
     public function post(Request $request){
         $mytime = Carbon::now();
+        $time = $mytime;
     	Pengunjung::create([
             'name' => $request->name,
             'latitude' => $request->latitude,
@@ -42,7 +48,7 @@ class BottombarController extends Controller
             'prodi' => $request->prodi,
             'status' => $request->status,
             'keperluan' => $request->keperluan,
-            'time' => $mytime
+            'time' => $time
         ]);
         return redirect('history');
     }

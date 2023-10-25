@@ -3,17 +3,18 @@
 
 <head>
     <meta charset="utf-8">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <meta name="msapplication-tap-highlight" content="no" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Perpustakaan Poliwangi</title>
+    <link rel="icon" type="image/png" href="https://poliwangi.ac.id/en/seleksipegawaikontrak2021/logo-poliwangi-4/"/>
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../owl/css/docs.theme.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/css/theme.bootstrap_4.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
-    <link rel="stylesheet" href="../bootstrap/css/Ludens---1-Index-Table-with-Search--Sort-Filters-v20.css">
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <link rel="stylesheet" href="../owl/css/owl.carousel.min.css">
     <link rel="stylesheet" href="../owl/css/owl.theme.default.min.css">
@@ -25,11 +26,12 @@
 
 <body>
     <nav class="navbar navbar-light navbar-expand-md fixed-top navbar-shrink py-3" id="mainNav">
-        <div class="container"><a class="navbar-brand d-flex align-items-center" href="/"><span class="desktop" style="text-align: center;">Perpustakaan <br>Poliwangi</span><span class="mobile">Perpustakaan Poliwangi</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container"><a class="navbar-brand d-flex align-items-center" href="/"><span class="desktop" style="text-align: center;">Perpustakaan <br>Poliwangi</span><span class="mobile">Perpustakaan Poliwangi</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1">
+            <span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item desktop"><a class="nav-link {{ (Request::is('/') ? 'active' : '') }}" href="{{ url('/') }}" style="text-align: center;">Halaman<br>Utama</a></li>
-                    <li class="nav-item desktop"><a class="nav-link {{ (Request::is('historykunjungan') ? 'active' : '') }}" href="{{ url('historykunjungan')}}" style="text-align: center;">History <br>Kunjungan</a></li>
+                    <li class="nav-item desktop"><a class="nav-link {{ (Request::is('history') ? 'active' : '') }}" href="{{ url('history')}}" style="text-align: center;">History <br>Kunjungan</a></li>
                     <li class="nav-item desktop"><a class="nav-link {{ (Request::is('surveikepuasan') ? 'active' : '') }}" href="{{ url('surveikepuasan') }}" style="text-align: center;">Survei <br>Kepuasan</a></li>
 
                     <li class="nav-item mobile"><a class="nav-link mb-1 {{ (Request::is('/') ? 'active' : '') }}" href="{{ url('/') }}">Halaman Utama</a></li>
@@ -46,13 +48,10 @@
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }}
                         </a>
-
                         <div class="dropdown-menu dropdown-menu-end bg-danger" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item bg-danger text-white" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                            <a class="dropdown-item bg-danger text-white" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                                 {{ __('Keluar') }}
                             </a>
-
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
                             </form>
@@ -63,7 +62,6 @@
             </div>
         </div>
     </nav>
-
     <nav class="navbar fixed-bottom bottom-bars shadow-lg mobile">
         <ion-icon id="home" name="home-outline" class="icons {{ (Request::is('/') ? 'actives' : '') }}" onclick="change(this); return welcome();">
         </ion-icon>
@@ -130,16 +128,10 @@
             </div>
         </div>
     </footer>
-    <script src="../bootstrap/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/js/jquery.tablesorter.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/js/widgets/widget-filter.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/js/widgets/widget-storage.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <script src="../bootstrap/js/Ludens---1-Index-Table-with-Search--Sort-Filters-v20-Ludens---1-Index-Table-with-Search--Sort-Filters.js"></script>
-    <script src="../bootstrap/js/Ludens---1-Index-Table-with-Search--Sort-Filters-v20-Ludens---Material-UI-Actions.js"></script>
-    <script src="../bootstrap/js/startup-modern.js"></script>
-    <script src="../owl/js/highlight.js"></script>
-    <script src="../owl/js/app.js"></script>
+    <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('bootstrap/js/startup-modern.js') }}"></script>
+    <script src="{{ asset('owl/js/highlight.js') }}"></script>
+    <script src="{{ asset('owl/js/app.js') }}"></script>
     <script>
         function change(item) {
             const buttons = document.querySelectorAll('ion-icon');

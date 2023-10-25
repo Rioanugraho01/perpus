@@ -24,12 +24,24 @@
                         <div class="mb-3"><label class="form-label" for="name"><strong>Nama Lengkap *</strong></label><input id="name" class="form-control" type="text" placeholder="Masukkan Nama Lengkap" name="name" required /></div>
                     </div>
                     <div class="col-sm-12 col-md-4 col-lg-4">
-                        <div class="mb-3"><label class="form-label" for="NIM/NIPPK/No.Telp"><strong>NIM/NIPPK/No.Telp *</strong><br /></label><input id="NIM/NIPPK/No.Telp" class="form-control" type="text" placeholder="Masukkan NIM/NIPPK/No.Telp" name="email" required /></div>
+                        <div class="mb-3">
+                            <label class="form-label" for="NIM/NIPPK/No.Telp">
+                                <strong>NIM/NIPPK <span class="text-danger">*</span></strong>
+                                <br />
+                            </label>
+                            <input id="email" class="form-control @error('email') is-invalid @enderror" type="text" placeholder="Masukkan NIM/NIPPK/No.Telp" name="email" required autocomplete="email" />
+                            @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-12 col-md-8 col-lg-5">
                     <div class="mb-3"><label class="form-label" for="country"><strong>Prodi *</strong></label><select class="form-select countries order-alpha limit-pop-1000000 presel-MX group-continents group-order-na" name="prodi" required>
+                            <option></option>
                             <option value="Agribisnis">Agribisnis</option>
                             <option value="Manajemen Bisnis dan Pariwisata">Manajemen Bisnis dan Pariwisata</option>
                             <option value="Teknik Manufaktur Kapal">Teknik Manufaktur Kapal</option>
@@ -46,6 +58,7 @@
                     </div>
                     <div class="col-sm-12 col-md-4 col-lg-3">
                     <div class="mb-3"><label class="form-label" for="status"><strong>status</strong></label><select class="form-select countries order-alpha limit-pop-1000000 presel-MX group-continents group-order-na" name="status" required>
+                        <option>Pilih Status</option>
                         <option value="Dosen">Dosen</option>
                         <option value="Umum">Umum</option>
                         <option value="Mahasiswa">Mahasiswa</option>

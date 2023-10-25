@@ -10,7 +10,7 @@
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
                         <div class="mb-3">
-                            <input id="text" type="text" class="shadow form-control @error('email') is-invalid @enderror" placeholder="Nim/Nippk/no.telp" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                            <input id="text" type="text" class="shadow form-control @error('email') is-invalid @enderror" placeholder="Nim/Nippk/Email" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                             @error('email')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
