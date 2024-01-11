@@ -13,13 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('pengunjung', function (Blueprint $table) {
+        Schema::create('option', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->string('prodi')->nullable();
-            $table->string('status')->nullable();
-            $table->string('alamat')->nullable();
+            $table->longText('opsi');
+            $table->integer('points')->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pengunjung');
+        Schema::dropIfExists('option');
     }
 };

@@ -4,13 +4,13 @@
 <section class="py-4 py-md-5 my-5">
         <div class="container py-md-5">
             <div class="row">
-                <div class="col-md-6 text-center"><img class="img-fluid w-100" src="../bootstrap/img/6897389.jpg"></div>
+                <div class="col-md-6 text-center"><img class="img-fluid w-100" src="{{ asset('bootstrap/img/6897389.jpg') }}"></div>
                 <div class="col-md-5 col-xl-4 text-center text-md-start">
                     <h2 class="display-6 fw-bold mb-5"><span class="underline pb-1"><strong>Login</strong><br></span></h2>
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
                         <div class="mb-3">
-                            <input id="text" type="text" class="shadow form-control @error('email') is-invalid @enderror" placeholder="Nim/Nippk/Email" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                            <input id="text" type="text" class="shadow form-control @error('email') is-invalid @enderror" placeholder="Email" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                             @error('email')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

@@ -17,7 +17,7 @@
 <body>
     <nav class="navbar navbar-light navbar-expand-md fixed-top navbar-shrink border-0" id="mainNav">
         <div class="container d-flex justify-content-center">
-            <a class="navbar-brand d-flex justify-content-center align-items-center" href="/"><img src="https://v2.poliwangi.ac.id/wp-content/uploads/2020/09/logo-poliwangi.png" width="70px" alt=""><span class="px-4">Perpustakaan <br> Poliwangi</span></a>
+            <a class="navbar-brand d-flex justify-content-center align-items-center" href="https://ta.poliwangi.ac.id/~ti21003/"><img src="https://v2.poliwangi.ac.id/wp-content/uploads/2020/09/logo-poliwangi.png" width="70px" alt=""><span class="px-4">Perpustakaan <br> Poliwangi</span></a>
         </div>
     </nav>
 
@@ -54,7 +54,7 @@
     window.location.href = "{{ url('presensi')}}";
     });
     $("#history").on('click', function() {
-    window.location = "{{ url('historykunjungan')}}";
+    window.location = "{{ url('history')}}";
     });
     $("#profile").on('click', function() {
     window.location = "{{ url('profile')}}";

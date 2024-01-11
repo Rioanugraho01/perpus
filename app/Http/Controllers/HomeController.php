@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Pengunjung;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -23,6 +26,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $topUsers = Pengunjung::select('user_id')->groupBy('user_id')->orderByRaw('COUNT(*) DESC')->take(3)->get();
+        return view('home', compact('topUsers'));
     }
 }

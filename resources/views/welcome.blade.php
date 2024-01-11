@@ -23,39 +23,19 @@
 <section>
     <div class="container">
         <div class="row gx-1 gx-lg-2 row-cols-3 row-cols-xl-3 justify-content-center">
+            @foreach($topUsers as $pengunjung)
             <div class="col">
                 <div class="card shadow-lg rounded">
-                    <img class="img-thumbnail border-0" src="https://img.freepik.com/free-photo/beautiful-asian-muslim-lady-casual-wear-working-using-laptop-modern-new-normal-office_7861-2975.jpg?t=st=1694080709~exp=1694081309~hmac=83e2159c1be813d4398d0214961e8c2567bc15fb3475a44ba6afe9ae5b02d564" alt="Responsive Image" /></p>
+                    <img class="border-0" src="{{ $pengunjung->users->image ?? asset('assets/img/user-profile-icon-front-side_kljtj0.jpg')  }}" alt="Responsive Image" /></p>
                     <div class="card-body">
                         <div class="text-center">
-                            <h6>Jeni Novitasari</h6>
-                            <p>Mahasiswa</p>
+                            <h6>{{ $pengunjung->users->name }}</h6>
+                            <p>{{ $pengunjung->users->status }}</p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col">
-                <div class="card shadow-lg rounded">
-                    <img class="img-thumbnail border-0" src="https://img.freepik.com/free-photo/portrait-young-beautiful-woman-gesticulating_273609-40467.jpg?w=2000&t=st=1694057567~exp=1694058167~hmac=a9c65f4ec4c13da7434ca9064757615d47d0012b9ae51e36cba309125e9b99d2" alt="Responsive Image" /></p>
-                    <div class="card-body">
-                        <div class="text-center">
-                            <h6>Galuh Ayu Oktaviani</h6>
-                            <p>Mahasiswa</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card shadow-lg rounded">
-                    <img class="img-thumbnail border-0" src="https://img.freepik.com/free-photo/smiling-businessman-standing-with-arms-folded-isolated-white_231208-13007.jpg?w=2000&t=st=1694083883~exp=1694084483~hmac=b2ae123f707f805465afcb4c33cda59ba5eefc5286864c2586266e02c5b9c59b" alt="Responsive Image" /></p>
-                    <div class="card-body">
-                        <div class="text-center">
-                            <h6>Azza Faiz Hamdani</h6>
-                            <p>Mahasiswa</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>
@@ -108,7 +88,7 @@
                 <h3 class="display-6 fw-bold pb-md-4">History&nbsp;<span class="underline" style="color: var(--bs-indigo);">Kunjungan</span></h3>
                 <p class="text-muted py-4 py-md-0">History Kunjungan adalah kunjungan yang dilakukan ke perpustakaan untuk tujuan pendidikan, penelitian, atau minat pribadi dalam akses sumber daya literatur dan informasi yang tersedia di dalamnya.&nbsp;</p><a class="btn btn-warning me-2 mt-2" role="button" href="{{ url('history') }}" style="background: var(--bs-indigo);color: var(--bs-white);display: inline-block;border-style: none;">Lihat Selengkapnya</a>
             </div>
-            <div class="col"><img class="rounded img-fluid w-100 fit-cover" style="min-height: 300px;" src="../bootstrap/img/illustrations/teamwork.svg" width="468" height="352"></div>
+            <div class="col"><img class="rounded img-fluid w-100 fit-cover" style="min-height: 300px;" src="{{ asset('bootstrap/img/illustrations/teamwork.svg') }}" width="468" height="352"></div>
         </div>
     </div>
 </section>
@@ -116,7 +96,7 @@
     <div class="container py-4 py-xl-5">
         <div class="row gy-4 gy-md-0">
             <div class="col-md-6 text-center text-md-start d-flex d-sm-flex d-md-flex justify-content-center align-items-center justify-content-md-start align-items-md-center justify-content-xl-center">
-                <div><img class="rounded img-fluid fit-cover" style="min-height: 300px;" src="../bootstrap/img/illustrations/presentation.svg" width="800"></div>
+                <div><img class="rounded img-fluid fit-cover" style="min-height: 300px;" src="{{ asset('bootstrap/img/illustrations/presentation.svg') }}" width="800"></div>
             </div>
             <div class="col">
                 <div style="max-width: 450px;">

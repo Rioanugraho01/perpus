@@ -29,7 +29,8 @@
                     <li class="nav-item"><a class="nav-link {{ (Request::is('geolocation') ? 'active' : '') }}" href="{{ url('geolocation') }}"><i class="fa fa-globe"></i><span>Geolokasi</span></a></li>
                     <li class="nav-item"><a class="nav-link {{ (Request::is('pengunjung') ? 'active' : '') }}" href="{{ url('pengunjung') }}"><i class="fas fa-user"></i><span>Data Pengunjung</span></a></li>
                     <li class="nav-item"><a class="nav-link {{ (Request::is('management') ? 'active' : '') }}" href="{{ url('management') }}"><i class="fa fa-users"></i><span>Data Kelola User</span></a></li>
-                    <li class="nav-item"><a class="nav-link {{ (Request::is('manajemenpengunjung') ? 'active' : '') }}" href="{{ url('manajemenpengunjung') }}"><i class="fa fa-book"></i><span>Edit Survei Kepuasan</span></a></li>
+                    <li class="nav-item"><a class="nav-link {{ (Request::is('survey') ? 'active' : '') }}" href="{{ url('survei') }}"><i class="fa fa-book"></i><span>Survei Kepuasan</span></a></li>
+                    <li class="nav-item"><a class="nav-link {{ (Request::is('survey') ? 'active' : '') }}" href="{{ url('pertanyaan') }}"><i class="fa fa-book"></i><span>Edit Pertanyaan Survei</span></a></li>
                 </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
             </div>

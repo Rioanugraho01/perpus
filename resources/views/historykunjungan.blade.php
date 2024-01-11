@@ -7,7 +7,7 @@
             <div class="card-header bg-gray py-3">
                 <div class="row align-items-center">
                 <div class="col-md-6">
-                <h5 class="text-primary m-0 fw-bold">Info Pengunjung</h5>
+                <h5 class="text-primary m-0 fw-bold">Riwayat Kunjungan</h5>
                 </div>
                 <div class="col-md-6">
                     <div class="text-md-end">
@@ -35,25 +35,29 @@
                     <table id="data-table" class="table my-0">
                         <thead>
                             <tr class="text-center">
-                                <th>Id</th>
-                                <th>Nama</th>
+                                <th>No</th>
+                                {{-- <th>Nama</th>
                                 <th>Email</th>
                                 <th>Prodi</th>
-                                <th>Status</th>
+                                <th>Status</th> --}}
                                 <th>Keperluan</th>
                                 <th>Tanggal</th>
+                                <th>Kuisioner</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($pengunjung as $pengguna)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $pengguna->name }}</td>
+                                {{-- <td>{{ $pengguna->name }}</td>
                                 <td>{{ $pengguna->email }}</td>
                                 <td>{{ $pengguna->prodi }}</td>
-                                <td>{{ $pengguna->status }}</td>
+                                <td>{{ $pengguna->status }}</td> --}}
                                 <td>{{ $pengguna->keperluan }}</td>
                                 <td>{{ $pengguna->time }}</td>
+                                <td class="align-middle">
+                                    <a class="btn btn-info btn-sm" role="button" href="{{ route ('surveikepuasan')}}">Isi Kuesioner</a>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>

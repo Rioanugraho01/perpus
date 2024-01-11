@@ -41,6 +41,7 @@ class BottombarController extends Controller
         $mytime = Carbon::now();
         $time = $mytime;
     	Pengunjung::create([
+            'user_id' =>Auth::user()->id,
             'name' => $request->name,
             'latitude' => $request->latitude,
             'longitude' => $request->longitude,

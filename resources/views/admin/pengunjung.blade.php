@@ -4,7 +4,7 @@
 <div class="container-fluid py-5">
     <div class="card rounded-5 border shadow">
         <div class="card-header border py-3" style="border-top-left-radius: 30px; border-top-right-radius: 30px;">
-            <div class="row align-items-center">
+            <div class="row align-items-center p-2">
                 <div class="col-md-6 text-nowrap">
                     <div id="dataTable_length" class="dataTables_length" aria-controls="data-table">
                         <h4 class="text-primary fw-bold">Info Pengunjung</h4>
@@ -14,7 +14,7 @@
                     <div class="text-md-end">
                         <label class="form-label pr-2">
                             <div class="input-group">
-                                <input id="dateInput" class="form-control form-control-sm" type="date" aria-controls="data-table" placeholder="Search" style="height: 40px;"/>
+                                <input id="dateInput" class="form-control form-control-sm" type="date" aria-controls="data-table" placeholder="Search" style="height: 38px;"/>
                             </div>
                         </label>
                         <label class="form-label">

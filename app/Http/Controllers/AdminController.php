@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use App\Models\Pengunjung;
 use App\Models\Koordinat;
+use App\Models\survey;
 
 class AdminController extends Controller
 {
@@ -54,52 +55,34 @@ class AdminController extends Controller
 
         $umum = 'Umum'; // cari umum
         $um = Pengunjung::whereYear('created_at', $year)->whereMonth('created_at', $month)->whereDay('created_at', $now)->where('status', $umum)->count();
-        
-        $agribisnis = Pengunjung::count();  // Total jumlah pengunjung
-        $agbb = Pengunjung::whereYear('created_at', $year)->whereMonth('created_at', $month)->whereDay('created_at', $now)->where('status', $dosen)->where('prodi', 'Agribisnis')->count();  // Jumlah pengunjung dengan nama tertentu
-        $agb = ($agbb / $agribisnis) * 100;
-        $endagb = $agb . '%';
+
+                $agribisnis = Pengunjung::count();  // Total jumlah pengunjung
+        $agbb = Pengunjung::whereYear('created_at', $year)->whereMonth('created_at', $month)->whereDay('created_at', $now)->where('prodi', 'Agribisnis')->count();  // Jumlah pengunjung dengan nama tertentu
 
         $manajemen = Pengunjung::count();  // Total jumlah pengunjung
-        $mbpp = Pengunjung::whereYear('created_at', $year)->whereMonth('created_at', $month)->whereDay('created_at', $now)->where('status', $dosen)->where('prodi', 'Manajemen Bisnis dan Pariwisata')->count();  // Jumlah pengunjung dengan nama tertentu
-        $mbp = ($mbpp / $manajemen) * 100;
-        $endmbp = $mbp . '%';
+        $mbpp = Pengunjung::whereYear('created_at', $year)->whereMonth('created_at', $month)->whereDay('created_at', $now)->where('prodi', 'Manajemen Bisnis dan Pariwisata')->count();  // Jumlah pengunjung dengan nama tertentu
 
         $kapal = Pengunjung::count();  // Total jumlah pengunjung
-        $tmkk = Pengunjung::whereYear('created_at', $year)->whereMonth('created_at', $month)->whereDay('created_at', $now)->where('status', $dosen)->where('prodi', 'Teknik Manufaktur Kapal')->count();  // Jumlah pengunjung dengan nama tertentu
-        $tmk = ($tmkk / $kapal) * 100;
-        $endtmk = $tmk . '%';
-        
+        $tmkk = Pengunjung::whereYear('created_at', $year)->whereMonth('created_at', $month)->whereDay('created_at', $now)->where('prodi', 'Teknik Manufaktur Kapal')->count();  // Jumlah pengunjung dengan nama tertentu
+
         $ternak = Pengunjung::count();  // Total jumlah pengunjung
-        $tphtt = Pengunjung::whereYear('created_at', $year)->whereMonth('created_at', $month)->whereDay('created_at', $now)->where('status', $dosen)->where('prodi', 'Teknologi Pengolahan Hasil Ternak')->count();  // Jumlah pengunjung dengan nama tertentu
-        $tpht = ($tphtt / $ternak) * 100;
-        $endtpht = $tpht . '%';
+        $tphtt = Pengunjung::whereYear('created_at', $year)->whereMonth('created_at', $month)->whereDay('created_at', $now)->where('prodi', 'Teknologi Pengolahan Hasil Ternak')->count();  // Jumlah pengunjung dengan nama tertentu
 
         $komputer = Pengunjung::count();  // Total jumlah pengunjung
-        $trkk = Pengunjung::whereYear('created_at', $year)->whereMonth('created_at', $month)->whereDay('created_at', $now)->where('status', $dosen)->where('prodi', 'Teknologi Rekayasa Komputer')->count();  // Jumlah pengunjung dengan nama tertentu
-        $trk = ($trkk / $komputer) * 100;
-        $endtrk = $trk . '%';
+        $trkk = Pengunjung::whereYear('created_at', $year)->whereMonth('created_at', $month)->whereDay('created_at', $now)->where('prodi', 'Teknologi Rekayasa Komputer')->count();  // Jumlah pengunjung dengan nama tertentu
 
         $lunak = Pengunjung::count();  // Total jumlah pengunjung
-        $trpll = Pengunjung::whereYear('created_at', $year)->whereMonth('created_at', $month)->whereDay('created_at', $now)->where('status', $dosen)->where('prodi', 'Teknologi Rekayasa Perangkat Lunak')->count();  // Jumlah pengunjung dengan nama tertentu
-        $trpl = ($trpll / $lunak) * 100;
-        $endtrpl = $trpl . '%';
+        $trpll = Pengunjung::whereYear('created_at', $year)->whereMonth('created_at', $month)->whereDay('created_at', $now)->where('prodi', 'Teknologi Rekayasa Perangkat Lunak')->count();  // Jumlah pengunjung dengan nama tertentu
 
         $digital = Pengunjung::count();  // Total jumlah pengunjung
-        $bdd = Pengunjung::whereYear('created_at', $year)->whereMonth('created_at', $month)->whereDay('created_at', $now)->where('status', $dosen)->where('prodi', 'Bisnis Digital')->count();  // Jumlah pengunjung dengan nama tertentu
-        $bd = ($bdd / $digital) * 100;
-        $endbd = $bd . '%';
+        $bdd = Pengunjung::whereYear('created_at', $year)->whereMonth('created_at', $month)->whereDay('created_at', $now)->where('prodi', 'Bisnis Digital')->count();  // Jumlah pengunjung dengan nama tertentu
 
         $manufaktur = Pengunjung::count();  // Total jumlah pengunjung
-        $trmm = Pengunjung::whereYear('created_at', $year)->whereMonth('created_at', $month)->whereDay('created_at', $now)->where('status', $dosen)->where('prodi', 'Teknologi Rekayasa Manufaktur')->count();  // Jumlah pengunjung dengan nama tertentu
-        $trm = ($trmm / $manufaktur) * 100;
-        $endtrm = $trm . '%';
+        $trmm = Pengunjung::whereYear('created_at', $year)->whereMonth('created_at', $month)->whereDay('created_at', $now)->where('prodi', 'Teknologi Rekayasa Manufaktur')->count();  // Jumlah pengunjung dengan nama tertentu
 
         $jembatan = Pengunjung::count();  // Total jumlah pengunjung
-        $trkjj = Pengunjung::whereYear('created_at', $year)->whereMonth('created_at', $month)->whereDay('created_at', $now)->where('status', $dosen)->where('prodi', 'Teknologi Rekayasa Konstruksi Jalan & Jembatan')->count();  // Jumlah pengunjung dengan nama tertentu
-        $trkj = ($trkjj / $jembatan) * 100;
-        $endtrkj = $trkj . '%';
-        return view('admin.dashboard', compact('pengguna','inputTanggal','agbb','mbpp','tmkk','tphtt','trkk','trpll','bdd','trmm','trkjj','hari','bulan','tahun','agb','dos','mah','um','jan','feb','mar','apr','may','jun','jul','ags','sep','oct','nov','des'));
+        $trkjj = Pengunjung::whereYear('created_at', $year)->whereMonth('created_at', $month)->whereDay('created_at', $now)->where('prodi', 'Teknologi Rekayasa Konstruksi Jalan & Jembatan')->count();  // Jumlah pengunjung dengan nama tertentu
+        return view('admin.dashboard', compact('pengguna','inputTanggal','agbb','mbpp','tmkk','tphtt','trkk','trpll','bdd','trmm','trkjj','hari','bulan','tahun','dos','mah','um','jan','feb','mar','apr','may','jun','jul','ags','sep','oct','nov','des'));
     }
 
     #Geolokasi
@@ -146,4 +129,9 @@ class AdminController extends Controller
         $pengunjung = Pengunjung::all();
         return view('admin.pengunjung', compact('pengunjung'));
     }
+
+    // public function survey(){
+    //     $survey = survey::all();
+    //     return view('admin.kelolaUser.survey', compact('survey'));
+    // }
 }

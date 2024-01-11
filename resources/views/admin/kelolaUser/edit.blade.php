@@ -24,7 +24,7 @@
                         <div class="mb-3"><label class="form-label" for="name"><strong>Nama Lengkap *</strong></label><input id="name" class="form-control" type="text" placeholder="{{ $user->name }}" name="name" value="{{ $user->name }}" required /></div>
                     </div>
                     <div class="col-sm-12 col-md-4 col-lg-4">
-                        <div class="mb-3"><label class="form-label" for="NIM/NIPPK/No.Telp"><strong>NIM/NIPPK/No.Telp *</strong><br /></label><input id="NIM/NIPPK/No.Telp" class="form-control" type="text" placeholder="{{ $user->email }}" value="{{ $user->email }}" name="email" required /></div>
+                        <div class="mb-3"><label class="form-label" for="NIM/NIPPK/No.Telp"><strong>Email *</strong><br /></label><input id="NIM/NIPPK/No.Telp" class="form-control" type="text" placeholder="{{ $user->email }}" value="{{ $user->email }}" name="email" required /></div>
                     </div>
                 </div>
                 <div class="row">

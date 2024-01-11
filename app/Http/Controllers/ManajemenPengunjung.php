@@ -114,9 +114,9 @@ class ManajemenPengunjung extends Controller
     {
         $user = User::find($id);
         CloudinaryStorage::delete($user->image);
+        $user->pengunjung()->delete(); // Assuming you have a relationship method named 'pengunjung'
         $user->delete();
-        return redirect()->route('user.index')
-        ->with('success', 'Data Deleted');
+        return redirect()->route('user.index')->with('success', 'Data Deleted');
     }
     // routes functions
     /**

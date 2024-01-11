@@ -86,7 +86,7 @@
             <div class="d-flex flex-column align-items-start" style="min-width: 200px; padding: 24px; gap: 8px; flex: 1 0 0; border-radius: 16px; background-color: #E5ECF6;">
                 <div class="d-flex align-items-center align-content-center align-self-stretch flex-wrap" style="gap: 8px; border-radius: 8px;">
                     <span class="align-self-stretch" style="color:#1C1C1C; font-feature-settings: 'cv11' on, 'cv01' on, 'ss01' on; font-family: inter; font-size: 14px; font-style:normal; font-weight: 600; line-height: 20px;">
-                        Total Akun Pengunjung
+                        Total Akun
                     </span>
                 </div>
                 <div class="d-flex justify-content-between align-items-center align-content-center align-self-stretch flex-wrap" style="row-gap:  8px; border-radius: 8px;">

@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\User;
 
-class profileController extends Controller
+class ProfileController extends Controller
 {
     public function __construct()
     {
@@ -22,6 +22,9 @@ class profileController extends Controller
     {
         $user = User::findOrFail(Auth::user()->id);
         if($request->hasFile('image')){
+            $request->validate([
+                'image' => 'required|image|mimes:jpeg,png,jpg,gif', // Sesuaikan dengan kebutuhan Anda
+            ]);
             $file   = $request->file('image');
             $result = CloudinaryStorage::replace($user->image, $file->getRealPath(), $file->getClientOriginalName());
             $user->update([
@@ -32,10 +35,11 @@ class profileController extends Controller
                 'alamat' => $request->alamat,
             ]);
         }else{
-            $file   = $request->file('image');
-            $result = CloudinaryStorage::replace($user->image, $file->getRealPath(), $file->getClientOriginalName());
+            $request->validate([
+                'image' => 'required|image|mimes:jpeg,png,jpg,gif', // Sesuaikan dengan kebutuhan Anda
+            ]);    
             $user->update([
-                'image' => $result,
+                
                 'name' => $request->name,
                 'prodi' => $request->prodi,
                 'status' => $request->status,

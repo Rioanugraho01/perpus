@@ -22,29 +22,22 @@
                     <div class="col-sm-8 col-md-8 col-lg-9 col-xl-10 col-xxl-10 align-self-center">
                         <div class="row">
                             <div class="col-md-12 text-start">
-                                <div class="mb-3"><label class="form-label" for="email"><strong>NIM/NIPPK/E-mail</strong></label><input value="{{ Auth::user()->email }}" disabled id="email" class="form-control" type="email" placeholder="{{ Auth::user()->email }}" name="email" required /></div>
+                                <div class="mb-3"><label class="form-label" for="email"><strong>Email</strong></label><input value="{{ Auth::user()->email }}" disabled id="email" class="form-control" type="email" placeholder="{{ Auth::user()->email }}" name="email" required /></div>
                             </div>
                             <div class="col-md-12 text-start">
                                 <div class="mb-3"><label class="form-label" for="username"><strong>Nama</strong></label><input class="form-control" type="text" placeholder="{{ Auth::user()->name }}" name="name" value="{{ Auth::user()->name }}" /></div>
                             </div>
                         </div>
                     </div>
+                
                     <div class="col-md-6">
-                        <div class="mb-3"><label class="form-label" for="country"><strong>Prodi</strong></label><select class="form-select countries order-alpha limit-pop-1000000 presel-MX group-continents group-order-na" name="prodi" required>
-                            <option value="Agribisnis">Agribisnis</option>
-                            <option value="Manajemen Bisnis dan Pariwisata">Manajemen Bisnis dan Pariwisata</option>
-                            <option value="Teknik Manufaktur Kapal">Teknik Manufaktur Kapal</option>
-                            <option value="Teknologi Pengolahan Hasil Ternak">Teknologi Pengolahan Hasil Ternak</option>
-                            <option value="Teknologi Rekayasa Komputer">Teknologi Rekayasa Komputer</option>
-                            <option value="Teknologi Rekayasa Perangkat Lunak">Teknologi Rekayasa Perangkat Lunak</option>
-                            <option value="Bisnis Digital">Bisnis Digital</option>
-                            <option value="Teknologi Rekayasa Manufaktur">Teknologi Rekayasa Manufaktur</option>
-                            <option value="Teknologi Rekayasa Konstruksi Jalan & Jembatan">Teknologi Rekayasa Konstruksi Jalan & Jembatan</option>
-                        </select></div>
+                        <div class="mb-3"><label class="form-label" for="address"><strong>Status</strong></label><input class="form-control" type="text" placeholder="{{ Auth::user()->status }}" value="{{ Auth::user()->status }}" name="status" readonly /></div>
                     </div>
+
                     <div class="col-md-6">
-                        <div class="mb-3"><label class="form-label" for="address"><strong>Status</strong></label><input class="form-control" type="text" placeholder="{{ Auth::user()->status }}" value="{{ Auth::user()->status }}" name="status" disabled /></div>
+                        <div class="mb-3"><label class="form-label" for="address"><strong>prodi</strong></label><input class="form-control" type="text" placeholder="{{ Auth::user()->prodi }}" value="{{ Auth::user()->prodi }}" name="prodi" readonly /></div>
                     </div>
+
                     <div class="col-md-6">
                         <div class="mb-3"><label class="form-label" for="address"><strong>Alamat</strong></label><input class="form-control" type="text" placeholder="{{ Auth::user()->alamat }}" name="alamat" value="{{ Auth::user()->alamat }}" /></div>
                     </div>

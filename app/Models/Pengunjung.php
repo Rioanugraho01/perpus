@@ -12,6 +12,7 @@ class Pengunjung extends Model
 
     protected $fillable = [
         'id',
+        'user_id',
         'name',
         'latitude',
         'longitude',
@@ -21,4 +22,9 @@ class Pengunjung extends Model
         'keperluan',
         'time'
     ];
+
+    public function users()
+    {
+        return $this->belongsTo(User::class,'user_id');
+    }
 }

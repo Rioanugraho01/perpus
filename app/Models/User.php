@@ -8,6 +8,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 
 class User extends Authenticatable
 {
@@ -66,6 +67,16 @@ class User extends Authenticatable
      public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = bcrypt($value);
+    }
+
+    public function Pengunjung()
+    {
+        return $this->hasMany(Pengunjung::class,'user_id');
+    }
+
+    public function userResult()
+    {
+        return $this->hasMany(SurveiResult::class);
     }
 
 }
