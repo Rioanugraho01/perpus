@@ -63,11 +63,11 @@
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item desktop"><a class="nav-link {{ (Request::is('/') ? 'active' : '') }}" href="{{ url('/') }}" style="text-align: center;">Halaman<br>Utama</a></li>
                     <li class="nav-item desktop"><a class="nav-link {{ (Request::is('history') ? 'active' : '') }}" href="{{ url('history')}}" style="text-align: center;">History <br>Kunjungan</a></li>
-                    <li class="nav-item desktop"><a class="nav-link {{ (Request::is('surveikepuasan') ? 'active' : '') }}" href="{{ url('surveikepuasan') }}" style="text-align: center;">Survei <br>Kepuasan</a></li>
+                    {{-- <li class="nav-item desktop"><a class="nav-link {{ (Request::is('surveikepuasan') ? 'active' : '') }}" href="{{ url('surveikepuasan') }}" style="text-align: center;">Survei <br>Kepuasan</a></li> --}}
 
                     <li class="nav-item mobile"><a class="nav-link mb-1 {{ (Request::is('/') ? 'active' : '') }}" href="{{ url('/') }}">Halaman Utama</a></li>
                     <li class="nav-item mobile"><a class="nav-link mb-1 {{ (Request::is('historykunjungan') ? 'active' : '') }}" href="{{ url('historykunjungan')}}">History Kunjungan</a></li>
-                    <li class="nav-item mobile"><a class="nav-link mb-1 {{ (Request::is('surveikepuasan') ? 'active' : '') }}" href="{{ url('surveikepuasan') }}">Survei Kepuasan</a></li>
+                    {{-- <li class="nav-item mobile"><a class="nav-link mb-1 {{ (Request::is('surveikepuasan') ? 'active' : '') }}" href="{{ url('surveikepuasan') }}">Survei Kepuasan</a></li> --}}
                 </ul>
                 <ul class="navbar-nav">
                     @guest

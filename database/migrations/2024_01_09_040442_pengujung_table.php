@@ -14,10 +14,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('pengujung', function (Blueprint $table) {
+        Schema::create('pengunjung', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class)->constrained()->cascadeOnUpdate();
-            $table->string('nama');
+            $table->string('name');
             $table->string('latitude');
             $table->string('longitude');
             $table->string('email');

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HistoryKunjunganController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Opsi;
@@ -53,17 +54,21 @@ Route::group(['middleware' => 'role:admin'], function () {
 
 Auth::routes();
 
-Route::get('/surveikepuasan', [App\Http\Controllers\KuisionerController::class, 'index'])->name('surveikepuasan');
-// Route::get('/surveikepuasan', [App\Http\Controllers\KuisionerController::class, 'option'])->name('surveikepuasan.opsi');
-Route::get('/history', [App\Http\Controllers\BottombarController::class, 'history'])->name('historyKunjungan');
-Route::post('/tambahkepuasan', [\App\Http\Controllers\SurveiKepuasan::class, 'store'])->name('tambah.kuisioner');
+
 
 
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-    // Route::get('/historypeminjaman', [App\Http\Controllers\HistoryPeminjaman::class, 'index'])->name('historypeminjaman');
+    Route::get('/history', [App\Http\Controllers\HistoryKunjunganController::class, 'index'])->name('history.kunjungan');
+    // Route::post('/historykunjungan', [App\Http\Controllers\HistoryKunjunganController::class, 'store'])->name('history.kunjungan.tambah');
     // Route::get('/bebastanggungan', [App\Http\Controllers\BebasTanggungan::class, 'index'])->name('bebastanggungan');
+
+    Route::get('/surveikepuasan/{id}', [App\Http\Controllers\KuisionerController::class, 'index'])->name('surveikepuasan');
+    // Route::get('/surveikepuasan', [App\Http\Controllers\KuisionerController::class, 'option'])->name('surveikepuasan.opsi');
+    // Route::get('/history', [App\Http\Controllers\BottombarController::class, 'history'])->name('historyKunjungan');
+    Route::post('/set-button-clicked', [HistoryKunjunganController::class, 'setButtonClicked'])->name('setButtonClicked');
+    Route::post('/tambahkepuasan', [\App\Http\Controllers\SurveiKepuasan::class, 'store'])->name('tambah.kuisioner');
 
     #ini presensi
     Route::get('/presensi', [App\Http\Controllers\BottombarController::class, 'index'])->name('presensi');

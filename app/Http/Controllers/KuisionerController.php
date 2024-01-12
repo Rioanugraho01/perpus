@@ -16,8 +16,7 @@ class KuisionerController extends Controller
     public function index(){
         // return view('surveikepuasan');
         $kuisioner = pertanyaan::all();
-        $opsiSurvei = Opsi::all();
-        return view('surveikepuasan', compact('kuisioner','opsiSurvei'));
+        return view('surveikepuasan', compact('kuisioner'));
     }
 
     public function option(){
