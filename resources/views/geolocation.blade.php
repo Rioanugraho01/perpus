@@ -34,7 +34,7 @@
             </div>
             <div class="col-lg-5 col-xl-4 mb-4">
                 <div class="d-flex flex-column align-items-start shadow border" style="padding: 24px; gap: 16px; flex: 1 0 0; border-radius: 16px; background-color:#F7F9FB;">
-                <div class="row">   
+                <div class="row">
                     <div class="col-md-12">
                         <h6 class="text-primary fw-bold ml-auto">Titik Koordinat</h6>
                     </div>
@@ -181,3 +181,4 @@
   </script>
 
     @endsection
+

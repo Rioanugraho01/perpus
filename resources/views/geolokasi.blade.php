@@ -70,10 +70,10 @@
   }).addTo(map);
 
   const coordinates = [
-  coordinat1, 
-  coordinat2, 
-  coordinat3, 
-  coordinat4  
+  coordinat1,
+  coordinat2,
+  coordinat3,
+  coordinat4
 ];
 
   const polygon = L.polygon(coordinates, {

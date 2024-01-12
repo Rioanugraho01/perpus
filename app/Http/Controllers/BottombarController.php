@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\HistoryKunjungan;
 use App\Models\Koordinat;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -36,7 +37,6 @@ class BottombarController extends Controller
         $koordinat4 = str_replace(['["', '"]'], '', $coordinat4);
         return view('geolokasi', compact('koordinat1','koordinat2','koordinat3','koordinat4'));
     }
-    
     public function post(Request $request){
         $mytime = Carbon::now();
         $time = $mytime;
@@ -51,8 +51,16 @@ class BottombarController extends Controller
             'keperluan' => $request->keperluan,
             'time' => $time
         ]);
-        return redirect('history');
+        // HistoryKunjungan::create([
+        //     'user_id' =>Auth::user()->id,
+        //     'keperluan' => $request->keperluan,
+        //     'tanggal' => $time
+        // ]);
+        return redirect()->route('history.kunjungan')->with('success', 'Data berhasil disimpan.');
+        // app(HistoryKunjunganController::class)->store(request());
+        // return redirect('history');
     }
+
 
     public function facescan(){
         return view('facescan');

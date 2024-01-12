@@ -9,7 +9,6 @@
                     <h4 class="text-primary fw-bold">Pertanyaan</h4>
 
                 </div>
-
             </div>
         </div>
         <div class="card-body">
@@ -71,7 +70,7 @@
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $soal->pertanyaan }}</td>
                                                 <td>
-                                                    <form action="{{ route('hapus.pertanyaan', ['id' => $soal->id]) }}" method="POST">
+                                                    <form action="{{ route('hapus.pertanyaan', ['id' => $soal->id_pertanyaan]) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-danger confirm-button">Hapus</button>
