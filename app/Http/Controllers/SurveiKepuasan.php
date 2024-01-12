@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use App\Models\jawaban;
 use App\Models\SurveiResult;
 use App\Models\User;
 
@@ -23,14 +22,6 @@ class SurveiKepuasan extends Controller
         return view('admin.kelolaUser.dashboardsurvei', compact('totalPoint'));
     }
 
-    public function show($result_id){
-        $result = jawaban::whereHas('user', function ($query) {
-            $query->whereId(auth()->id());
-        })->findOrFail($result_id);
-
-        return view('client.results', compact('result'));
-    }
-
     public function store(Request $request){
 
         $user_id = auth()->id();
@@ -46,6 +37,7 @@ class SurveiKepuasan extends Controller
             ['user_id' => $user_id],
             ['total_points' => $totalPoints]
         );
+        return redirect()->route('history.kunjungan');
         // dd($request->all());
         // $kuisioner = pertanyaan::create($request->validated() + ['user_id' => auth()->id()]);
         // $kuisioner->questions()->sync($request->input('questions', []));

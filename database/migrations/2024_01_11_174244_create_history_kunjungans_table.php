@@ -3,8 +3,6 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use App\Models\User;
-
 
 return new class extends Migration
 {
@@ -15,11 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('jawaban', function (Blueprint $table) {
+        Schema::create('history_kunjungan', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(User::class)->constrained()->cascadeOnUpdate();
-            $table->integer('total_points')->nullable();
+            $table->unsignedBigInteger('user_id');
+            $table->string('keperluan');
+            $table->date('tanggal');
             $table->timestamps();
+
+            // Relasi ke tabel user
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -30,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('history_kunjungans');
     }
 };

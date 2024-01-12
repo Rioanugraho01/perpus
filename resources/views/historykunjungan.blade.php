@@ -46,7 +46,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($pengunjung as $pengguna)
+                            @foreach($history->get() as $pengguna)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 {{-- <td>{{ $pengguna->name }}</td>
@@ -56,7 +56,7 @@
                                 <td>{{ $pengguna->keperluan }}</td>
                                 <td>{{ $pengguna->time }}</td>
                                 <td class="align-middle">
-                                    <a class="btn btn-info btn-sm" role="button" href="{{ route ('surveikepuasan')}}">Isi Kuesioner</a>
+                                    <a class="btn btn-info btn-sm" role="button" href="{{ route('surveikepuasan', ['id' => $pengguna->id]) }}" id="kuesionerBtn_{{ $pengguna->id }}" onclick="return confirm('Apakah Anda yakin ingin mengisi kuisioner?') && hideButton({{ $pengguna->id }})">Isi Kuesioner</a>
                                 </td>
                             </tr>
                             @endforeach
@@ -67,9 +67,49 @@
         </div>
     </div>
 </section>
-
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
 <script src="{{ asset('assets/js/table.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+<script>
+    // Function to hide the button and store the information in localStorage
+    function hideButton(id) {
+        // Hide the button
+        document.getElementById(`kuesionerBtn_${id}`).style.display = 'none';
+
+        // Store information in localStorage
+        localStorage.setItem(`kuesionerBtn_${id}_clicked`, true);
+    }
+
+    // Check localStorage and hide buttons that have been clicked before
+    document.addEventListener('DOMContentLoaded', function () {
+        @foreach($history->get() as $pengguna)
+            var storedValue = localStorage.getItem(`kuesionerBtn_{{ $pengguna->id }}_clicked`);
+            if (storedValue === 'true') {
+                document.getElementById(`kuesionerBtn_{{ $pengguna->id }}`).style.display = 'none';
+            }
+        @endforeach
+    });
+</script>
+<script type="text/javascript">
+
+    $('.confirm-button').click(function(event) {
+        var form =  $(this).closest("form");
+        event.preventDefault();
+        swal({
+            title: `Apakah anda yakin?`,
+            text: "Survei kepuasan hanya dapat dilakukan sekali",
+            icon: "info",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    form.submit();
+                }
+            });
+    });
+
+</script>
 @endsection
