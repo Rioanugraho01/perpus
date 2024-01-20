@@ -70,7 +70,7 @@
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $soal->pertanyaan }}</td>
                                                 <td>
-                                                    <form action="{{ route('hapus.pertanyaan', ['id' => $soal->id_pertanyaan]) }}" method="POST">
+                                                    <form action="{{ route('hapus.pertanyaan', ['id' => $soal->id]) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-danger confirm-button">Hapus</button>
@@ -108,8 +108,8 @@
         var form =  $(this).closest("form");
         event.preventDefault();
         swal({
-            title: `Are you sure you want to delete this row?`,
-            text: "It will gone forevert",
+            title: `Apakah anda yakin?`,
+            text: "Data akan dihapus permanen",
             icon: "warning",
             buttons: true,
             dangerMode: true,

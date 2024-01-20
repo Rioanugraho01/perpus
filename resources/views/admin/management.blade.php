@@ -82,8 +82,8 @@
         var form =  $(this).closest("form");
         event.preventDefault();
         swal({
-            title: `Are you sure you want to delete this row?`,
-            text: "It will gone forevert",
+            title: `Apakah anda yakin?`,
+            text: "Data akan dihapus secara permanen",
             icon: "warning",
             buttons: true,
             dangerMode: true,

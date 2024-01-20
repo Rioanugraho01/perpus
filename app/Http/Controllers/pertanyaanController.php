@@ -30,9 +30,9 @@ class pertanyaanController extends Controller
         return back()->with('success', 'Pertanyaan berhasil dibuat.');
     }
 
-    public function destroy($id_pertanyaan)
+    public function destroy($id)
     {
-        $pertanyaan = pertanyaan::find($id_pertanyaan);
+        $pertanyaan = pertanyaan::find($id);
         $pertanyaan->delete();
         return back()->with('success-hapus', 'Pertanyaan berhasil Dihapus.');
 

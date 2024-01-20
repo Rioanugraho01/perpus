@@ -56,8 +56,11 @@
                                 <td>{{ $pengguna->keperluan }}</td>
                                 <td>{{ $pengguna->time }}</td>
                                 <td class="align-middle">
-                                    <a class="btn btn-info btn-sm" role="button" href="{{ route('surveikepuasan', ['id' => $pengguna->id]) }}" id="kuesionerBtn_{{ $pengguna->id }}" onclick="return confirm('Apakah Anda yakin ingin mengisi kuisioner?') && hideButton({{ $pengguna->id }})">Isi Kuesioner</a>
+                                    <a class="btn btn-info btn-sm" role="button" href="{{ route('surveikepuasan', ['id' => $pengguna->id]) }}" id="kuesionerBtn_{{ $pengguna->id }}" onclick="return confirmAndHideButton({{ $pengguna->id }})">Isi Kuesioner</a>
                                 </td>
+                                {{-- <td class="align-middle">
+                                    <a class="btn btn-info btn-sm" role="button" href="{{ route('surveikepuasan', ['id' => $pengguna->id]) }}" id="kuesionerBtn_{{ $pengguna->id }}" onclick="return confirm('Apakah Anda yakin ingin mengisi kuisioner?') && hideButton({{ $pengguna->id }})">Isi Kuesioner</a>
+                                </td> --}}
                             </tr>
                             @endforeach
                         </tbody>
@@ -73,6 +76,36 @@
 <script src="{{ asset('assets/js/table.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
 <script>
+    function confirmAndHideButton(id) {
+        if (confirm('Apakah Anda yakin ingin mengisi kuisioner?')) {
+            hideButton(id);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function hideButton(id) {
+        // Simpan informasi bahwa tombol sudah diklik ke dalam localStorage
+        localStorage.setItem('buttonClicked_' + id, true);
+
+        // Sembunyikan tombol
+        document.getElementById('kuesionerBtn_' + id).style.display = 'none';
+
+        return false; // Jangan melakukan navigasi standar (href)
+    }
+
+    // Cek apakah tombol sudah diklik sebelumnya dan sembunyikan jika iya
+    document.addEventListener('DOMContentLoaded', function() {
+        @foreach($history->get() as $pengguna)
+            var buttonClicked = localStorage.getItem('buttonClicked_{{ $pengguna->id }}');
+            if (buttonClicked) {
+                document.getElementById('kuesionerBtn_{{ $pengguna->id }}').style.display = 'none';
+            }
+        @endforeach
+    });
+</script>
+{{-- <script>
     // Function to hide the button and store the information in localStorage
     function hideButton(id) {
         // Hide the button
@@ -91,7 +124,7 @@
             }
         @endforeach
     });
-</script>
+</script> --}}
 <script type="text/javascript">
 
     $('.confirm-button').click(function(event) {
